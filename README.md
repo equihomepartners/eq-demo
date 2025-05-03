@@ -1,6 +1,10 @@
 # Equihome Platform Demo
 
-This is a standalone version of the Equihome Platform Demo, showcasing the complete workflow of the Equihome platform. The demo includes:
+This is a standalone version of the Equihome Platform Demo, showcasing the complete workflow of the Equihome platform.
+
+**Live Demo:** [https://equihomepartners.github.io/eq-demo/](https://equihomepartners.github.io/eq-demo/)
+
+The demo includes:
 
 1. **Underwriting System** - Processes loan applications, evaluates properties and homeowners, and generates term sheets for no-monthly-payment loans.
 2. **Traffic Light System** - Classifies suburbs into green, yellow, and red zones based on investment potential, using machine learning to analyze market data.
@@ -60,6 +64,30 @@ npm run dev
   - `/data` - Mock data for the demo
   - `/standalone` - Standalone-specific components and utilities
   - `/utils` - Utility functions and helpers
+
+## Embedding the Demo
+
+You can embed this demo in other websites using an iframe:
+
+```html
+<iframe
+  src="https://equihomepartners.github.io/eq-demo/"
+  width="100%"
+  height="800px"
+  frameborder="0"
+  title="Equihome Platform Demo">
+</iframe>
+```
+
+## Deployment
+
+To deploy the demo to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+This will build the project and publish it to the `gh-pages` branch, making it available at https://equihomepartners.github.io/eq-demo/.
 
 ## License
 
