@@ -12,6 +12,8 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
   // Load traffic light data
   useEffect(() => {
     const data = getTrafficLightData();
+    console.log('Traffic Light Data:', data);
+    console.log('Suburb Polygons:', data.suburbPolygons);
     setTrafficLightData(data);
   }, []);
 
@@ -54,7 +56,18 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
   };
 
   // Get suburb polygons from traffic light data
-  const suburbPolygons = trafficLightData?.suburbPolygons || {};
+  const suburbPolygons = trafficLightData?.suburbPolygons?.features?.reduce((acc, feature) => {
+    if (feature.properties && feature.properties.name && feature.geometry && feature.geometry.coordinates) {
+      // Convert GeoJSON coordinates to SVG points
+      const points = feature.geometry.coordinates[0].map(coord => ({
+        x: (coord[0] - 150.8) * 2000, // Scale and offset longitude
+        y: (coord[1] + 34.1) * -2000  // Scale and offset latitude (negative to flip y-axis)
+      }));
+
+      acc[feature.properties.name] = points;
+    }
+    return acc;
+  }, {}) || {};
 
   return (
     <div className="bg-white rounded-md border border-neutral-200 shadow-sm overflow-hidden">
@@ -79,11 +92,15 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
 
             {/* Suburb polygons */}
             {trafficLightData && Object.entries(suburbPolygons).map(([suburb, points]) => {
+              console.log('Rendering suburb:', suburb, 'Points:', points);
               const color = getZoneColor(suburb);
               const isSelected = suburb === selectedSuburb;
 
               // Skip rendering if no points or invalid data
-              if (!Array.isArray(points) || points.length === 0) return null;
+              if (!Array.isArray(points) || points.length === 0) {
+                console.log('Skipping suburb due to invalid points:', suburb, points);
+                return null;
+              }
 
               return (
                 <g key={suburb}>

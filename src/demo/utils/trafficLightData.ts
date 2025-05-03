@@ -11,7 +11,7 @@ import { isStandalone } from './environment';
 import { trafficLightZones } from '../../data/trafficLightZones';
 
 // Import standalone data
-import standaloneBoundaries from '../standalone/data/sydneySuburbBoundaries';
+import standaloneBoundaries from '../../data/sydneySuburbBoundaries';
 import { trafficLightOverlays as standaloneOverlays, defaultOverlay, mapboxAccessToken, initialViewState, demoProperties } from '../standalone/data/trafficLightOverlays';
 
 // Get the correct suburb boundaries data
