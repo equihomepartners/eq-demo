@@ -1,0 +1,139 @@
+import React from 'react';
+import { Card, CardContent } from '../components/ui/card';
+import { Building2, LineChart, Map, FileCheck, Calculator } from 'lucide-react';
+
+const DemoIntro: React.FC = () => {
+  return (
+    <div className="space-y-8">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          Welcome to the Equihome Platform Demo
+        </h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          This interactive demo will guide you through the complete workflow of the Equihome platform,
+          showcasing how our systems work together to provide a comprehensive property investment solution.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <FileCheck className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Underwriting System</h3>
+              <p className="text-gray-600 text-sm">
+                Processes loan applications, evaluates properties and homeowners, and generates term sheets
+                for no-monthly-payment loans.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                <Map className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Traffic Light System</h3>
+              <p className="text-gray-600 text-sm">
+                Classifies suburbs into green, yellow, and red zones based on investment potential,
+                using machine learning to analyze market data.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                <LineChart className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Portfolio Management System</h3>
+              <p className="text-gray-600 text-sm">
+                Manages loan portfolios, applies CIO guidelines, runs simulations for portfolio optimization,
+                and provides financial modeling.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="bg-gray-50 p-6 rounded-lg mt-8">
+        <h3 className="text-xl font-semibold mb-4">Demo Workflow</h3>
+        <div className="space-y-4">
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-blue-600 font-medium">1</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Loan Application</h4>
+              <p className="text-gray-600">
+                Start with a loan application submission in the Underwriting System.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-green-600 font-medium">2</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Traffic Light Analysis</h4>
+              <p className="text-gray-600">
+                See how the Traffic Light System evaluates the suburb and provides risk assessment.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-blue-600 font-medium">3</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Underwriting Decision</h4>
+              <p className="text-gray-600">
+                Observe the decision engine process and how it generates a loan decision.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-purple-600 font-medium">4</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Portfolio Impact</h4>
+              <p className="text-gray-600">
+                See how the approved loan impacts the overall portfolio metrics.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-purple-600 font-medium">5</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Simulation</h4>
+              <p className="text-gray-600">
+                Run a simulation to see the long-term performance of the portfolio with the new loan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center mt-8">
+        <p className="text-gray-600 italic">
+          Note: This demo uses mock data and is isolated from the actual platform functionality.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default DemoIntro;
