@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge } from '../ui/badge';
-import { trafficLightZones } from '../../../data/trafficLightZones';
+import { getTrafficLightData } from '../../utils/trafficLightData';
 
 interface TrafficLightMapProps {
   selectedSuburb?: string;
 }
 
 const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mosman' }) => {
-  // Mock data for Sydney map visualization
+  const [trafficLightData, setTrafficLightData] = useState<any>(null);
+
+  // Load traffic light data
+  useEffect(() => {
+    const data = getTrafficLightData();
+    setTrafficLightData(data);
+  }, []);
+
+  // Map configuration
   const mapData = {
     width: 800,
     height: 600,
@@ -17,77 +25,36 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
 
   // Get zone color
   const getZoneColor = (suburb: string) => {
-    if (trafficLightZones.green.includes(suburb)) {
+    if (!trafficLightData) return "#cccccc"; // Default gray if data not loaded
+
+    if (trafficLightData.zones.green.includes(suburb)) {
       return "#22c55e"; // Green
-    } else if (trafficLightZones.orange.includes(suburb)) {
+    } else if (trafficLightData.zones.orange.includes(suburb)) {
       return "#f97316"; // Orange
-    } else {
+    } else if (trafficLightData.zones.red.includes(suburb)) {
       return "#ef4444"; // Red
+    } else {
+      return "#cccccc"; // Gray for unknown
     }
   };
 
   // Get zone name
   const getZoneName = (suburb: string) => {
-    if (trafficLightZones.green.includes(suburb)) {
+    if (!trafficLightData) return "Unknown";
+
+    if (trafficLightData.zones.green.includes(suburb)) {
       return "Green";
-    } else if (trafficLightZones.orange.includes(suburb)) {
+    } else if (trafficLightData.zones.orange.includes(suburb)) {
       return "Orange";
-    } else {
+    } else if (trafficLightData.zones.red.includes(suburb)) {
       return "Red";
+    } else {
+      return "Unknown";
     }
   };
 
-  // Simplified suburb polygons for visualization
-  const suburbPolygons = {
-    "Mosman": [
-      { x: 420, y: 250 },
-      { x: 450, y: 260 },
-      { x: 460, y: 290 },
-      { x: 440, y: 310 },
-      { x: 410, y: 300 },
-      { x: 400, y: 270 },
-    ],
-    "Double Bay": [
-      { x: 460, y: 320 },
-      { x: 490, y: 330 },
-      { x: 500, y: 350 },
-      { x: 480, y: 370 },
-      { x: 450, y: 360 },
-      { x: 440, y: 340 },
-    ],
-    "Bondi": [
-      { x: 510, y: 340 },
-      { x: 540, y: 350 },
-      { x: 550, y: 380 },
-      { x: 530, y: 400 },
-      { x: 500, y: 390 },
-      { x: 490, y: 360 },
-    ],
-    "Randwick": [
-      { x: 500, y: 400 },
-      { x: 530, y: 410 },
-      { x: 540, y: 440 },
-      { x: 520, y: 460 },
-      { x: 490, y: 450 },
-      { x: 480, y: 420 },
-    ],
-    "Marrickville": [
-      { x: 450, y: 400 },
-      { x: 480, y: 410 },
-      { x: 490, y: 440 },
-      { x: 470, y: 460 },
-      { x: 440, y: 450 },
-      { x: 430, y: 420 },
-    ],
-    "Blacktown": [
-      { x: 200, y: 300 },
-      { x: 230, y: 310 },
-      { x: 240, y: 340 },
-      { x: 220, y: 360 },
-      { x: 190, y: 350 },
-      { x: 180, y: 320 },
-    ],
-  };
+  // Get suburb polygons from traffic light data
+  const suburbPolygons = trafficLightData?.suburbPolygons || {};
 
   return (
     <div className="bg-white rounded-md border border-neutral-200 shadow-sm overflow-hidden">
@@ -109,12 +76,15 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
           >
             {/* Water background */}
             <rect x="0" y="0" width={mapData.width} height={mapData.height} fill="#e0f2fe" />
-            
+
             {/* Suburb polygons */}
-            {Object.entries(suburbPolygons).map(([suburb, points]) => {
+            {trafficLightData && Object.entries(suburbPolygons).map(([suburb, points]) => {
               const color = getZoneColor(suburb);
               const isSelected = suburb === selectedSuburb;
-              
+
+              // Skip rendering if no points or invalid data
+              if (!Array.isArray(points) || points.length === 0) return null;
+
               return (
                 <g key={suburb}>
                   <polygon
@@ -124,22 +94,25 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
                     stroke="#ffffff"
                     strokeWidth={isSelected ? 3 : 1.5}
                   />
-                  <text
-                    x={points.reduce((sum, p) => sum + p.x, 0) / points.length}
-                    y={points.reduce((sum, p) => sum + p.y, 0) / points.length}
-                    textAnchor="middle"
-                    fill="#ffffff"
-                    fontSize="12"
-                    fontWeight={isSelected ? "bold" : "normal"}
-                  >
-                    {suburb}
-                  </text>
+                  {/* Only show text for selected suburb or major suburbs to avoid clutter */}
+                  {(isSelected || ['Mosman', 'Bondi', 'Randwick', 'Marrickville', 'Blacktown', 'Double Bay'].includes(suburb)) && (
+                    <text
+                      x={points.reduce((sum, p) => sum + p.x, 0) / points.length}
+                      y={points.reduce((sum, p) => sum + p.y, 0) / points.length}
+                      textAnchor="middle"
+                      fill="#ffffff"
+                      fontSize="12"
+                      fontWeight={isSelected ? "bold" : "normal"}
+                    >
+                      {suburb}
+                    </text>
+                  )}
                 </g>
               );
             })}
-            
+
             {/* Selected suburb highlight */}
-            {selectedSuburb && suburbPolygons[selectedSuburb] && (
+            {trafficLightData && selectedSuburb && suburbPolygons[selectedSuburb] && Array.isArray(suburbPolygons[selectedSuburb]) && suburbPolygons[selectedSuburb].length > 0 && (
               <g>
                 <circle
                   cx={suburbPolygons[selectedSuburb].reduce((sum, p) => sum + p.x, 0) / suburbPolygons[selectedSuburb].length}
@@ -153,7 +126,7 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
               </g>
             )}
           </svg>
-          
+
           {/* Selected suburb info */}
           {selectedSuburb && (
             <div className="absolute bottom-4 left-4 bg-white p-3 rounded-md shadow-md border border-neutral-200">
@@ -167,9 +140,9 @@ const TrafficLightMap: React.FC<TrafficLightMapProps> = ({ selectedSuburb = 'Mos
             </div>
           )}
         </div>
-        
+
         <div className="mt-3 text-xs text-neutral-500 text-center">
-          Simplified visualization of Sydney suburbs with Traffic Light System zoning
+          Detailed visualization of Sydney suburbs with Traffic Light System zoning
         </div>
       </div>
     </div>
