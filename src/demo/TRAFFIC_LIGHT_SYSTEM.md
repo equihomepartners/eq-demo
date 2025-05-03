@@ -1,4 +1,4 @@
-# Traffic Light System - Standalone Setup Guide
+# Traffic Light System - Standalone Setup Guide (Updated)
 
 This guide explains how to ensure the Traffic Light System works correctly in the standalone demo, with all the map boundaries, overlays, and data from the main platform.
 
