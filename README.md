@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# Equihome Platform Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a standalone version of the Equihome Platform Demo, showcasing the complete workflow of the Equihome platform. The demo includes:
 
-Currently, two official plugins are available:
+1. **Underwriting System** - Processes loan applications, evaluates properties and homeowners, and generates term sheets for no-monthly-payment loans.
+2. **Traffic Light System** - Classifies suburbs into green, yellow, and red zones based on investment potential, using machine learning to analyze market data.
+3. **Portfolio Management System** - Manages loan portfolios, applies CIO guidelines, runs simulations for portfolio optimization, and provides financial modeling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Interactive demo with guided tour
+- Standalone architecture that runs independently
+- Responsive design with Tailwind CSS
+- Mock data for demonstration purposes
+- Simulated API calls and data processing
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+- Node.js (v18+)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/equihomepartners/eq-demo.git
+cd eq-demo
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal).
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Radix UI Components
+- Chart.js / Recharts
+- React Router
+- Mapbox GL / React Map GL
+
+## Project Structure
+
+- `/src/demo` - Main demo components and logic
+  - `/components` - UI components organized by feature
+  - `/context` - React context providers
+  - `/data` - Mock data for the demo
+  - `/standalone` - Standalone-specific components and utilities
+  - `/utils` - Utility functions and helpers
+
+## License
+
+This project is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
