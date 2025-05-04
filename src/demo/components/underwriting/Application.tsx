@@ -490,8 +490,12 @@ const Application: React.FC = () => {
                       <span>{mockLoanApplication.property.bedrooms}br / {mockLoanApplication.property.bathrooms}ba</span>
                     </div>
                     <div className="grid grid-cols-2">
-                      <span className="text-gray-500">Value:</span>
-                      <span>${mockLoanApplication.property.currentValue.toLocaleString()}</span>
+                      <span className="text-gray-500">PropTrack AVM:</span>
+                      <span>${mockLoanApplication.property.originalValue.toLocaleString()}</span>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <span className="text-gray-500">Risk Adjusted Value:</span>
+                      <span>${mockLoanApplication.property.currentValue.toLocaleString()} (-5%)</span>
                     </div>
                     <div className="grid grid-cols-2">
                       <span className="text-gray-500">Mortgage Balance:</span>
