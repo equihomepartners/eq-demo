@@ -65,6 +65,21 @@ const GuidedDemoNavigation: React.FC<GuidedDemoNavigationProps> = ({ className =
     return prevStep;
   };
 
+  // Define the demo flow steps that match the tabs in PlatformDemo.tsx
+  const demoSteps = [
+    'intro',
+    'underwriting-application',
+    'traffic-light-analysis',
+    'portfolio-impact',
+    'simulation',
+    'underwriting-decision',
+    'executive-summary',
+    'complete'
+  ];
+
+  // Current step index in the demo flow
+  const [demoStepIndex, setDemoStepIndex] = useState(0);
+
   // Function to handle next button click
   const handleNext = () => {
     // If there's a specific action for this step, execute it
@@ -74,11 +89,17 @@ const GuidedDemoNavigation: React.FC<GuidedDemoNavigationProps> = ({ className =
       // Move to the next detailed step
       nextDetailedStep();
 
-      // Also update the main demo flow
+      // Move to the next step in the demo flow
+      const nextIndex = Math.min(demoStepIndex + 1, demoSteps.length - 1);
+      setDemoStepIndex(nextIndex);
+
+      // Dispatch the demo-advance event with the next step
       const demoAdvanceEvent = new CustomEvent('demo-advance', {
-        detail: { nextStep: mapTabToStep(currentTab) }
+        detail: { nextStep: demoSteps[nextIndex] }
       });
       window.dispatchEvent(demoAdvanceEvent);
+
+      console.log('Navigation: Moving to', demoSteps[nextIndex]);
     }
   };
 
@@ -87,26 +108,17 @@ const GuidedDemoNavigation: React.FC<GuidedDemoNavigationProps> = ({ className =
     // Move to the previous detailed step
     prevDetailedStep();
 
-    // Also update the main demo flow
+    // Move to the previous step in the demo flow
+    const prevIndex = Math.max(demoStepIndex - 1, 0);
+    setDemoStepIndex(prevIndex);
+
+    // Dispatch the demo-advance event with the previous step
     const demoAdvanceEvent = new CustomEvent('demo-advance', {
-      detail: { nextStep: mapTabToStep(currentTab) }
+      detail: { nextStep: demoSteps[prevIndex] }
     });
     window.dispatchEvent(demoAdvanceEvent);
-  };
 
-  // Helper function to map tabs to steps
-  const mapTabToStep = (tab: DemoTab): string => {
-    const tabToStepMap: Record<string, string> = {
-      'introduction': 'intro',
-      'underwriting': 'underwriting-application',
-      'traffic-light': 'traffic-light-analysis',
-      'portfolio': 'portfolio-impact',
-      'simulation': 'simulation',
-      'executive-summary': 'executive-summary',
-      'complete': 'complete'
-    };
-
-    return tabToStepMap[tab] || 'intro';
+    console.log('Navigation: Moving to', demoSteps[prevIndex]);
   };
 
   // Update the current detailed step whenever the main step or tab changes
