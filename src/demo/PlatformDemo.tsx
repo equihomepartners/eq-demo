@@ -453,10 +453,8 @@ const PlatformDemo: React.FC = () => {
           </TabsContent>
         </Tabs>
 
-                {/* Step Context */}
-                <div className="mt-8">
-                  <GuidedDemoNavigation />
-                </div>
+                {/* Enhanced Navigation */}
+                <GuidedDemoNavigation />
               </>
             )}
           </div>

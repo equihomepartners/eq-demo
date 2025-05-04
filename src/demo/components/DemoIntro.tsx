@@ -70,6 +70,18 @@ const DemoIntro: React.FC = () => {
               <span className="text-blue-600 font-medium">1</span>
             </div>
             <div>
+              <h4 className="text-lg font-medium">Introduction</h4>
+              <p className="text-gray-600">
+                Overview of the Equihome platform and its integrated systems.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-blue-600 font-medium">2</span>
+            </div>
+            <div>
               <h4 className="text-lg font-medium">Loan Application</h4>
               <p className="text-gray-600">
                 Start with a loan application submission in the Underwriting System.
@@ -79,24 +91,12 @@ const DemoIntro: React.FC = () => {
 
           <div className="flex items-start">
             <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 mt-0.5">
-              <span className="text-green-600 font-medium">2</span>
+              <span className="text-green-600 font-medium">3</span>
             </div>
             <div>
               <h4 className="text-lg font-medium">Traffic Light Analysis</h4>
               <p className="text-gray-600">
-                See how the Traffic Light System evaluates the suburb and provides risk assessment.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-0.5">
-              <span className="text-blue-600 font-medium">3</span>
-            </div>
-            <div>
-              <h4 className="text-lg font-medium">Underwriting Decision</h4>
-              <p className="text-gray-600">
-                Observe the decision engine process and how it generates a loan decision.
+                See how the Traffic Light System evaluates the suburb and provides risk assessment with detailed geospatial analysis.
               </p>
             </div>
           </div>
@@ -108,7 +108,7 @@ const DemoIntro: React.FC = () => {
             <div>
               <h4 className="text-lg font-medium">Portfolio Impact</h4>
               <p className="text-gray-600">
-                See how the approved loan impacts the overall portfolio metrics.
+                See how the potential loan impacts the overall portfolio metrics and investment strategy.
               </p>
             </div>
           </div>
@@ -120,7 +120,43 @@ const DemoIntro: React.FC = () => {
             <div>
               <h4 className="text-lg font-medium">Simulation</h4>
               <p className="text-gray-600">
-                Run a simulation to see the long-term performance of the portfolio with the new loan.
+                Run advanced simulations to see the long-term performance of the portfolio with the new loan.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-blue-600 font-medium">6</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Underwriting Decision</h4>
+              <p className="text-gray-600">
+                Observe the decision engine process and how it generates a loan decision based on all available data.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-indigo-600 font-medium">7</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Executive Summary</h4>
+              <p className="text-gray-600">
+                Review comprehensive metrics and insights about the portfolio and investment strategy.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-emerald-600 font-medium">8</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Complete</h4>
+              <p className="text-gray-600">
+                Demo completion with options to restart or explore specific sections.
               </p>
             </div>
           </div>

@@ -438,60 +438,7 @@ const Decision: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
-                      <div className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                        <div>
-                          <h3 className="text-sm font-medium text-blue-800">Decision Complete</h3>
-                          <p className="text-sm text-blue-700 mt-1">
-                            The loan application has been <strong>APPROVED</strong> by the Decision Engine. The application has been added to the loan pipeline and is ready for funding.
-                          </p>
-                          <div className="mt-3 p-3 bg-white rounded-md border border-blue-100">
-                            <h4 className="text-sm font-medium text-blue-800 mb-2">Pipeline Status Update</h4>
-                            <div className="flex items-center justify-between text-sm">
-                              <span>Application ID:</span>
-                              <span className="font-medium">{demoState.application.id}</span>
-                            </div>
-                            <div className="flex items-center justify-between text-sm mt-1">
-                              <span>Status:</span>
-                              <span className="font-medium text-green-600">APPROVED</span>
-                            </div>
-                            <div className="flex items-center justify-between text-sm mt-1">
-                              <span>Decision Score:</span>
-                              <span className="font-medium">{mockDecisionResult.score}/100</span>
-                            </div>
-                            <div className="flex items-center justify-between text-sm mt-1">
-                              <span>Loan Term:</span>
-                              <span className="font-medium">{mockDecisionResult.loanTerms.term} years</span>
-                            </div>
-                            <div className="flex items-center justify-between text-sm mt-1">
-                              <span>Example Early Exit:</span>
-                              <span className="font-medium">{mockDecisionResult.loanTerms.actualExitTerm.toFixed(2)} years ({new Date(mockDecisionResult.loanTerms.actualExitDate).toLocaleDateString()})</span>
-                            </div>
-                          </div>
-                          <p className="text-sm text-blue-700 mt-3">
-                            <strong>Next Step:</strong> The application will now be analyzed for its impact on the overall portfolio, including diversification, risk metrics, and projected returns.
-                          </p>
-                          <p className="text-sm text-blue-700 mt-2">
-                            Click the "Next Step" button below to continue to the Portfolio Impact analysis.
-                          </p>
-                          <div className="mt-4">
-                            <Button
-                              variant="outline"
-                              onClick={() => {
-                                // Dispatch event to advance to executive summary
-                                const event = new CustomEvent('demo-advance', {
-                                  detail: { nextStep: 'executive-summary' }
-                                });
-                                window.dispatchEvent(event);
-                              }}
-                            >
-                              Skip to Executive Summary
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Blue guidance blurb temporarily removed */}
                   </div>
                 </TabsContent>
 

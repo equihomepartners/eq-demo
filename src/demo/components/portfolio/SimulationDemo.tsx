@@ -578,19 +578,7 @@ const SimulationDemo: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                      <div className="flex items-start">
-                        <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                        <div>
-                          <h3 className="text-sm font-medium text-blue-800">Scenario Insights</h3>
-                          <p className="text-sm text-blue-700 mt-1">
-                            Even in the pessimistic scenario, the portfolio maintains a strong IRR of {formatPercentage(mockSimulationResult.results.scenarios[2].irr)},
-                            demonstrating the resilience of the investment strategy. The base case scenario has a 50% probability,
-                            while the optimistic and pessimistic scenarios each have a 25% probability.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Blue guidance blurb temporarily removed */}
                   </div>
                 </TabsContent>
 
@@ -643,20 +631,7 @@ const SimulationDemo: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                      <div className="flex items-start">
-                        <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                        <div>
-                          <h3 className="text-sm font-medium text-blue-800">Sensitivity Insights</h3>
-                          <p className="text-sm text-blue-700 mt-1">
-                            The portfolio is most sensitive to property growth rates and reinvestment rates,
-                            with elasticities of 1.8 and 1.2 respectively. This suggests that focusing on
-                            high-growth suburbs and optimizing reinvestment strategies will have the greatest
-                            impact on portfolio performance.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Blue guidance blurb temporarily removed */}
                   </div>
                 </TabsContent>
 
@@ -747,22 +722,7 @@ const SimulationDemo: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <div className="flex items-start">
-                          <Zap className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                          <div>
-                            <h3 className="text-sm font-medium text-blue-800">Simulation Analysis Conclusion</h3>
-                            <p className="text-sm text-blue-700 mt-1">
-                              The comprehensive simulation analysis strongly supports approving this loan. The loan enhances the portfolio's
-                              long-term performance, improves risk-adjusted returns, and demonstrates resilience in stress test scenarios.
-                            </p>
-                            <p className="text-sm text-blue-700 mt-2">
-                              This analysis will be combined with the Traffic Light System data and Portfolio Impact analysis
-                              in the Decision Engine to make the final underwriting decision.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      {/* Blue guidance blurb temporarily removed */}
 
                       <div className="mt-6 flex justify-center">
                         <div className="flex items-center space-x-2 text-blue-600">
@@ -785,49 +745,7 @@ const SimulationDemo: React.FC = () => {
             </CardFooter>
           </Card>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <div className="flex items-start">
-              <ArrowRight className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-              <div>
-                <h3 className="text-sm font-medium text-blue-800">Next Steps</h3>
-                <p className="text-sm text-blue-700 mt-1">
-                  The simulation analysis is complete. The results show that adding this loan to the portfolio would enhance
-                  overall performance while maintaining a balanced risk profile. These insights will now be used in the
-                  final underwriting decision.
-                </p>
-                <p className="text-sm text-blue-700 mt-2">
-                  The next step is to proceed to the Underwriting Decision, where all the analyses from the Traffic Light System,
-                  Portfolio Management System, and Simulation Engine will be combined to make the final decision.
-                </p>
-                <div className="mt-4 flex space-x-4">
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      // Dispatch event to advance to underwriting decision
-                      const event = new CustomEvent('demo-advance', {
-                        detail: { nextStep: 'underwriting-decision' }
-                      });
-                      window.dispatchEvent(event);
-                    }}
-                  >
-                    Proceed to Decision
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      // Dispatch event to advance to executive summary
-                      const event = new CustomEvent('demo-advance', {
-                        detail: { nextStep: 'executive-summary' }
-                      });
-                      window.dispatchEvent(event);
-                    }}
-                  >
-                    Skip to Executive Summary
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Blue guidance blurb temporarily removed */}
         </div>
       )}
     </div>

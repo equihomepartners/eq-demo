@@ -512,21 +512,7 @@ const Impact: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <div className="flex items-start">
-                          <RefreshCw className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                          <div>
-                            <h3 className="text-sm font-medium text-blue-800">Rebalancing Strategy</h3>
-                            <p className="text-sm text-blue-700 mt-1">
-                              The portfolio rebalancing strategy focuses on maintaining optimal diversification while increasing exposure to high-performing green zone suburbs.
-                              The addition of this loan in {demoState.application.property.suburb} aligns with this strategy, as it increases allocation to a prime green zone suburb.
-                            </p>
-                            <p className="text-sm text-blue-700 mt-2">
-                              Future loan originations should target Bondi to increase allocation, while reducing exposure to Randwick and Parramatta.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      {/* Blue guidance blurb temporarily removed */}
                     </div>
                   </div>
                 </TabsContent>
@@ -680,23 +666,7 @@ const Impact: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <div className="flex items-start">
-                          <Shield className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                          <div>
-                            <h3 className="text-sm font-medium text-blue-800">Risk Assessment Conclusion</h3>
-                            <p className="text-sm text-blue-700 mt-1">
-                              The addition of this loan improves the overall risk profile of the portfolio by reducing the risk score,
-                              lowering volatility, and improving the Sharpe ratio. The loan's low LTV and green zone location contribute
-                              positively to the portfolio's resilience against market downturns.
-                            </p>
-                            <p className="text-sm text-blue-700 mt-2">
-                              The only slight concern is the increased concentration in {demoState.application.property.suburb},
-                              but this is mitigated by the strong fundamentals of the suburb and the overall portfolio diversification.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      {/* Blue guidance blurb temporarily removed */}
                     </div>
                   </div>
                 </TabsContent>
@@ -788,23 +758,7 @@ const Impact: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <div className="flex items-start">
-                          <Zap className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                          <div>
-                            <h3 className="text-sm font-medium text-blue-800">Portfolio Analysis Conclusion</h3>
-                            <p className="text-sm text-blue-700 mt-1">
-                              The portfolio analysis strongly supports approving this loan. The loan enhances portfolio returns,
-                              improves the risk profile, and aligns with the portfolio strategy of focusing on green zone suburbs
-                              with strong fundamentals.
-                            </p>
-                            <p className="text-sm text-blue-700 mt-2">
-                              This analysis will be combined with the Traffic Light System data and individual loan metrics
-                              in the Decision Engine to make the final underwriting decision.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      {/* Blue guidance blurb temporarily removed */}
 
                       <div className="mt-6 flex justify-center">
                         <div className="flex items-center space-x-2 text-blue-600">
@@ -827,22 +781,7 @@ const Impact: React.FC = () => {
             </CardFooter>
           </Card>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <div className="flex items-start">
-              <ArrowRight className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-              <div>
-                <h3 className="text-sm font-medium text-blue-800">Next Steps</h3>
-                <p className="text-sm text-blue-700 mt-1">
-                  The portfolio impact analysis is complete. The analysis shows that this loan would be a positive addition to the portfolio,
-                  improving key metrics and aligning with our investment strategy.
-                </p>
-                <p className="text-sm text-blue-700 mt-2">
-                  The next step is to run a simulation to see the long-term performance of the portfolio with this new loan,
-                  which will provide additional insights for the final underwriting decision.
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Blue guidance blurb temporarily removed */}
         </div>
       )}
     </div>

@@ -535,26 +535,7 @@ const Application: React.FC = () => {
             </CardFooter>
           </Card>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <div className="flex items-start">
-              <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-              <div>
-                <h3 className="text-sm font-medium text-blue-800">Application Submitted Successfully</h3>
-                <p className="text-sm text-blue-700 mt-1">
-                  The application has been submitted to the Underwriting System and will now be processed through the following steps:
-                </p>
-                <ol className="mt-2 ml-4 text-sm text-blue-700 list-decimal">
-                  <li className="mb-1"><strong>Traffic Light Analysis:</strong> Analyze the property's suburb using the Traffic Light System</li>
-                  <li className="mb-1"><strong>Underwriting Decision:</strong> Evaluate the application using the Decision Engine</li>
-                  <li className="mb-1"><strong>Portfolio Impact:</strong> Assess how this loan affects the overall portfolio</li>
-                  <li><strong>Simulation:</strong> Run financial simulations to project returns</li>
-                </ol>
-                <p className="text-sm text-blue-700 mt-2">
-                  Click the "Next Step" button below to continue to the Traffic Light Analysis.
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Blue guidance blurb temporarily removed */}
         </div>
       )}
     </div>

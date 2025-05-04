@@ -302,23 +302,7 @@ const Analysis: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
-                      <div className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
-                        <div>
-                          <h3 className="text-sm font-medium text-blue-800">Analysis Complete</h3>
-                          <p className="text-sm text-blue-700 mt-1">
-                            The Traffic Light Analysis has been completed successfully. The property is located in a {mockSuburbData.zone.toUpperCase()} zone.
-                          </p>
-                          <p className="text-sm text-blue-700 mt-2">
-                            <strong>Next Step:</strong> The application will now be evaluated by the Underwriting Decision Engine, which will use this Traffic Light data along with borrower information to make a loan decision.
-                          </p>
-                          <p className="text-sm text-blue-700 mt-2">
-                            Click the "Next Step" button below to continue to the Underwriting Decision.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Blue guidance blurb temporarily removed */}
                   </div>
                 </TabsContent>
 
