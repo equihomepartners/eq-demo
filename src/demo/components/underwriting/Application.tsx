@@ -13,23 +13,23 @@ const Application: React.FC = () => {
   const { demoState, updateDemoState } = useContext(DemoContext);
   const [activeTab, setActiveTab] = useState('borrower');
   const [formData, setFormData] = useState({
-    borrowerName: 'James & Sarah Wilson',
-    borrowerEmail: 'james.wilson@example.com',
+    borrowerName: 'Thomas & Sabrina',
+    borrowerEmail: 'thomas.sabrina@example.com',
     borrowerPhone: '0412 345 678',
-    borrowerIncome: '450000',
-    borrowerEmploymentStatus: 'self-employed',
-    propertyAddress: '42 Mosman Street',
+    borrowerIncome: '200000',
+    borrowerEmploymentStatus: 'retired',
+    propertyAddress: '49A Central Avenue',
     propertySuburb: 'Mosman',
     propertyState: 'NSW',
     propertyPostcode: '2088',
     propertyType: 'house',
     propertyBedrooms: '4',
     propertyBathrooms: '3',
-    propertyLandSize: '650',
-    propertyValue: '4200000',
-    propertyMortgageBalance: '1800000',
-    loanAmount: '850000',
-    loanPurpose: 'investment',
+    propertyLandSize: '676',
+    propertyValue: '2660000',
+    propertyMortgageBalance: '0',
+    loanAmount: '500000',
+    loanPurpose: 'Bank of Mum and Dad',
     loanTerm: '10'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -368,6 +368,7 @@ const Application: React.FC = () => {
                             <SelectValue placeholder="Select loan purpose" />
                           </SelectTrigger>
                           <SelectContent>
+                            <SelectItem value="Bank of Mum and Dad">Bank of Mum and Dad</SelectItem>
                             <SelectItem value="investment">Investment</SelectItem>
                             <SelectItem value="renovation">Renovation</SelectItem>
                             <SelectItem value="debt-consolidation">Debt Consolidation</SelectItem>

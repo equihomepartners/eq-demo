@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Badge } from '../ui/badge';
-import { AlertCircle, CheckCircle, MapPin, TrendingUp, Shield, BarChart2, Building2, Brain, ListFilter, Map, Info } from 'lucide-react';
+import { AlertCircle, CheckCircle, MapPin, TrendingUp, Shield, BarChart2, Building2, Brain, ListFilter, Map, Info, DollarSign } from 'lucide-react';
 import DemoContext from '../../context/DemoContext';
 import mockData, { mockSuburbData, mockLoanApplication } from '../../data/mockData';
 import EnhancedTrafficLightMap from './EnhancedTrafficLightMap';
@@ -186,6 +186,31 @@ const Analysis: React.FC = () => {
 
                 <TabsContent value="overview">
                   <div className="space-y-6">
+                    {/* PropTrack AVM Report */}
+                    <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-4">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full mr-3">
+                          <DollarSign className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-medium text-blue-900">PropTrack AVM Report</h4>
+                          <div className="mt-2 grid grid-cols-2 gap-4">
+                            <div>
+                              <p className="text-xs text-blue-700">Property Value:</p>
+                              <p className="text-sm font-semibold text-blue-900">${demoState.application.property.originalValue.toLocaleString()}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-blue-700">Risk Adjustment:</p>
+                              <p className="text-sm font-semibold text-blue-900">-5.00%</p>
+                            </div>
+                          </div>
+                          <p className="text-xs text-blue-600 mt-2">
+                            Automated Valuation Model report for {demoState.application.property.address}, {demoState.application.property.suburb}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Map and Metrics Grid */}
                     <div className="mb-6">
                       {/* Enhanced Map */}
