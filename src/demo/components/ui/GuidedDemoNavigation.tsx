@@ -71,14 +71,42 @@ const GuidedDemoNavigation: React.FC<GuidedDemoNavigationProps> = ({ className =
     if (currentDetailedStep.action) {
       currentDetailedStep.action();
     } else {
-      // Otherwise, move to the next step in the guided demo
-      nextStep();
+      // Move to the next detailed step
+      nextDetailedStep();
+
+      // Also update the main demo flow
+      const demoAdvanceEvent = new CustomEvent('demo-advance', {
+        detail: { nextStep: mapTabToStep(currentTab) }
+      });
+      window.dispatchEvent(demoAdvanceEvent);
     }
   };
 
   // Function to handle previous button click
   const handlePrev = () => {
-    prevStep();
+    // Move to the previous detailed step
+    prevDetailedStep();
+
+    // Also update the main demo flow
+    const demoAdvanceEvent = new CustomEvent('demo-advance', {
+      detail: { nextStep: mapTabToStep(currentTab) }
+    });
+    window.dispatchEvent(demoAdvanceEvent);
+  };
+
+  // Helper function to map tabs to steps
+  const mapTabToStep = (tab: DemoTab): string => {
+    const tabToStepMap: Record<string, string> = {
+      'introduction': 'intro',
+      'underwriting': 'underwriting-application',
+      'traffic-light': 'traffic-light-analysis',
+      'portfolio': 'portfolio-impact',
+      'simulation': 'simulation',
+      'executive-summary': 'executive-summary',
+      'complete': 'complete'
+    };
+
+    return tabToStepMap[tab] || 'intro';
   };
 
   // Update the current detailed step whenever the main step or tab changes

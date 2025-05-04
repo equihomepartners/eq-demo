@@ -157,19 +157,7 @@ const PlatformDemo: React.FC = () => {
     <DemoContext.Provider value={{ demoState, updateDemoState }}>
       <GuidedDemoProvider>
         <div className="flex flex-col min-h-screen">
-          {/* Floating Next Button */}
-          {currentStep < DEMO_STEPS.length - 1 && (
-            <FloatingNextButton
-              onClick={() => {
-                nextStep();
-                // Also trigger the guided demo navigation
-                const guidedDemoContext = document.querySelector('[data-guided-demo-context]');
-                if (guidedDemoContext && guidedDemoContext.__guidedDemoContext) {
-                  guidedDemoContext.__guidedDemoContext.nextStep();
-                }
-              }}
-            />
-          )}
+          {/* Floating Next Button removed in favor of GuidedDemoNavigation */}
         {/* Platform Header */}
         <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -381,21 +369,7 @@ const PlatformDemo: React.FC = () => {
                   </div>
                 )}
 
-                {/* Old Demo Navigation */}
-                <DemoNavigation
-                  currentStep={currentStep}
-                  totalSteps={DEMO_STEPS.length}
-                  stepNames={[
-                    'Introduction',
-                    'Loan Application',
-                    'Traffic Light Analysis',
-                    'Portfolio Impact',
-                    'Simulation',
-                    'Underwriting Decision',
-                    'Executive Summary',
-                    'Complete'
-                  ]}
-                />
+                {/* Old Demo Navigation removed in favor of GuidedDemoNavigation */}
 
 
 
