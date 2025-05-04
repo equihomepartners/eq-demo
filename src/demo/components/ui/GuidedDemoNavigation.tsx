@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useGuidedDemo, DemoStep, DemoTab } from '../../context/GuidedDemoContext';
-import { useDemoState } from '../../context/DemoContext';
 import { Info, ArrowRight, ArrowLeft, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Button } from './button';
 
@@ -27,8 +26,6 @@ const GuidedDemoNavigation: React.FC<GuidedDemoNavigationProps> = ({ className =
     stepTitle,
     stepDescription
   } = useGuidedDemo();
-
-  const demoState = useDemoState();
 
   // State to track the current detailed navigation step
   const [currentDetailedStep, setCurrentDetailedStep] = useState<NavigationStep>({
