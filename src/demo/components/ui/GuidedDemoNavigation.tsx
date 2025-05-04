@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGuidedDemo, DemoStep, DemoTab } from '../../context/GuidedDemoContext';
 import { useDemoState } from '../../context/DemoContext';
 import { Info, ArrowRight, ArrowLeft, ChevronRight, ChevronLeft } from 'lucide-react';
-import { Button } from '../../../components/ui/button';
+import { Button } from './button';
 
 interface GuidedDemoNavigationProps {
   className?: string;
