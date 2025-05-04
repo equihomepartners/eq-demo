@@ -26,7 +26,7 @@ const Application: React.FC = () => {
     propertyBedrooms: '4',
     propertyBathrooms: '3',
     propertyLandSize: '676',
-    propertyValue: '2660000',
+    propertyValue: '2800000',
     propertyMortgageBalance: '0',
     loanAmount: '500000',
     loanPurpose: 'Bank of Mum and Dad',
@@ -314,7 +314,7 @@ const Application: React.FC = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="propertyValue">Property Value</Label>
+                        <Label htmlFor="propertyValue">Property Value (PropTrack AVM)</Label>
                         <Input
                           id="propertyValue"
                           name="propertyValue"
@@ -323,6 +323,7 @@ const Application: React.FC = () => {
                           onChange={handleInputChange}
                           required
                         />
+                        <p className="text-xs text-blue-600 mt-1">PropTrack Automated Valuation Model</p>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="propertyMortgageBalance">Mortgage Balance</Label>
