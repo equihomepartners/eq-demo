@@ -155,94 +155,271 @@ const GuidedDemoContext = createContext<GuidedDemoContextType | undefined>(undef
 
 // Define the step flow
 const stepFlow: DemoStep[] = [
+  DemoStep.Introduction,
+
+  // Underwriting steps
   DemoStep.UnderwritingIntro,
   DemoStep.UnderwritingApplication,
-  DemoStep.UnderwritingAnalysis,
-  DemoStep.UnderwritingDecision,
+  DemoStep.UnderwritingApplicationBorrower,
+  DemoStep.UnderwritingApplicationProperty,
+  DemoStep.UnderwritingApplicationLoan,
+  DemoStep.UnderwritingApplicationSubmit,
+  DemoStep.UnderwritingApplicationProcessing,
+  DemoStep.UnderwritingApplicationComplete,
+
+  // Traffic Light steps
   DemoStep.TrafficLightIntro,
   DemoStep.TrafficLightMap,
+  DemoStep.TrafficLightMapView,
+  DemoStep.TrafficLightMapSuburb,
   DemoStep.TrafficLightAnalysis,
+  DemoStep.TrafficLightComparison,
+
+  // Portfolio steps
   DemoStep.PortfolioIntro,
   DemoStep.PortfolioImpact,
-  DemoStep.PortfolioMetrics,
+  DemoStep.PortfolioImpactOverview,
+  DemoStep.PortfolioImpactDiversification,
+  DemoStep.PortfolioImpactRisk,
+  DemoStep.PortfolioImpactDecision,
+
+  // Simulation steps
   DemoStep.SimulationIntro,
+  DemoStep.SimulationScenarios,
   DemoStep.SimulationMonteCarlo,
-  DemoStep.SimulationEfficientFrontier,
+  DemoStep.SimulationSensitivity,
+  DemoStep.SimulationDecision,
+
+  // Underwriting Decision steps
+  DemoStep.UnderwritingDecision,
+  DemoStep.UnderwritingDecisionOverview,
+  DemoStep.UnderwritingDecisionFactors,
+  DemoStep.UnderwritingDecisionTerms,
+
+  // Executive Summary steps
+  DemoStep.ExecutiveSummary,
+  DemoStep.ExecutiveSummaryDashboard,
+  DemoStep.ExecutiveSummaryPortfolio,
+  DemoStep.ExecutiveSummaryPipeline,
+  DemoStep.ExecutiveSummaryRecommendations,
+
+  // Complete
   DemoStep.Complete
 ];
 
 // Map steps to tabs
 const stepToTab: Record<DemoStep, DemoTab> = {
+  // Introduction
+  [DemoStep.Introduction]: DemoTab.Introduction,
+
+  // Underwriting steps
   [DemoStep.UnderwritingIntro]: DemoTab.Underwriting,
   [DemoStep.UnderwritingApplication]: DemoTab.Underwriting,
-  [DemoStep.UnderwritingAnalysis]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingApplicationBorrower]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingApplicationProperty]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingApplicationLoan]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingApplicationSubmit]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingApplicationProcessing]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingApplicationComplete]: DemoTab.Underwriting,
   [DemoStep.UnderwritingDecision]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingDecisionOverview]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingDecisionFactors]: DemoTab.Underwriting,
+  [DemoStep.UnderwritingDecisionTerms]: DemoTab.Underwriting,
+
+  // Traffic Light steps
   [DemoStep.TrafficLightIntro]: DemoTab.TrafficLight,
   [DemoStep.TrafficLightMap]: DemoTab.TrafficLight,
+  [DemoStep.TrafficLightMapView]: DemoTab.TrafficLight,
+  [DemoStep.TrafficLightMapSuburb]: DemoTab.TrafficLight,
   [DemoStep.TrafficLightAnalysis]: DemoTab.TrafficLight,
+  [DemoStep.TrafficLightComparison]: DemoTab.TrafficLight,
+
+  // Portfolio steps
   [DemoStep.PortfolioIntro]: DemoTab.Portfolio,
   [DemoStep.PortfolioImpact]: DemoTab.Portfolio,
+  [DemoStep.PortfolioImpactOverview]: DemoTab.Portfolio,
+  [DemoStep.PortfolioImpactDiversification]: DemoTab.Portfolio,
+  [DemoStep.PortfolioImpactRisk]: DemoTab.Portfolio,
+  [DemoStep.PortfolioImpactDecision]: DemoTab.Portfolio,
   [DemoStep.PortfolioMetrics]: DemoTab.Portfolio,
+
+  // Simulation steps
   [DemoStep.SimulationIntro]: DemoTab.Simulation,
+  [DemoStep.SimulationScenarios]: DemoTab.Simulation,
   [DemoStep.SimulationMonteCarlo]: DemoTab.Simulation,
-  [DemoStep.SimulationEfficientFrontier]: DemoTab.Simulation,
-  [DemoStep.Complete]: DemoTab.Portfolio
+  [DemoStep.SimulationSensitivity]: DemoTab.Simulation,
+  [DemoStep.SimulationDecision]: DemoTab.Simulation,
+
+  // Executive Summary steps
+  [DemoStep.ExecutiveSummary]: DemoTab.ExecutiveSummary,
+  [DemoStep.ExecutiveSummaryDashboard]: DemoTab.ExecutiveSummary,
+  [DemoStep.ExecutiveSummaryPortfolio]: DemoTab.ExecutiveSummary,
+  [DemoStep.ExecutiveSummaryPipeline]: DemoTab.ExecutiveSummary,
+  [DemoStep.ExecutiveSummaryRecommendations]: DemoTab.ExecutiveSummary,
+
+  // Complete
+  [DemoStep.Complete]: DemoTab.Complete
 };
 
 // Step descriptions
 const stepDescriptions: Record<DemoStep, { title: string, description: string }> = {
+  // Introduction
+  [DemoStep.Introduction]: {
+    title: "Welcome to Equihome",
+    description: "Explore the Equihome platform and its integrated systems for Bank of Mum and Dad lending."
+  },
+
+  // Underwriting steps
   [DemoStep.UnderwritingIntro]: {
     title: "Welcome to the Underwriting System",
     description: "This is where loan applications are received and processed. Let's start by reviewing a new application."
   },
   [DemoStep.UnderwritingApplication]: {
-    title: "Loan Application Review",
-    description: "Here we can see the details of the loan application, including borrower information, property details, and loan terms."
+    title: "Loan Application",
+    description: "Submit a new loan application with borrower and property details."
   },
-  [DemoStep.UnderwritingAnalysis]: {
-    title: "Application Analysis",
-    description: "Our system analyzes the application against various criteria, including credit score, property location, and loan-to-value ratio."
+  [DemoStep.UnderwritingApplicationBorrower]: {
+    title: "Borrower Information",
+    description: "Enter details about the borrower, including personal and financial information."
+  },
+  [DemoStep.UnderwritingApplicationProperty]: {
+    title: "Property Information",
+    description: "Enter details about the property, including location, type, and valuation."
+  },
+  [DemoStep.UnderwritingApplicationLoan]: {
+    title: "Loan Details",
+    description: "Enter loan parameters, including amount, term, and purpose."
+  },
+  [DemoStep.UnderwritingApplicationSubmit]: {
+    title: "Review & Submit",
+    description: "Review all application details before submission."
+  },
+  [DemoStep.UnderwritingApplicationProcessing]: {
+    title: "Application Processing",
+    description: "The application is being processed by the system."
+  },
+  [DemoStep.UnderwritingApplicationComplete]: {
+    title: "Application Submitted",
+    description: "The application has been successfully submitted and is ready for analysis."
   },
   [DemoStep.UnderwritingDecision]: {
-    title: "Decision Engine",
-    description: "The decision engine provides a recommendation based on the analysis, showing key factors that influenced the decision."
+    title: "Underwriting Decision",
+    description: "The decision engine provides a recommendation based on the analysis."
   },
+  [DemoStep.UnderwritingDecisionOverview]: {
+    title: "Decision Overview",
+    description: "High-level summary of the underwriting decision."
+  },
+  [DemoStep.UnderwritingDecisionFactors]: {
+    title: "Decision Factors",
+    description: "Detailed factors that influenced the underwriting decision."
+  },
+  [DemoStep.UnderwritingDecisionTerms]: {
+    title: "Loan Terms",
+    description: "Approved loan terms and conditions."
+  },
+
+  // Traffic Light steps
   [DemoStep.TrafficLightIntro]: {
     title: "Traffic Light System",
     description: "The Traffic Light System helps identify optimal investment areas based on various metrics and data points."
   },
   [DemoStep.TrafficLightMap]: {
-    title: "Geographic Analysis",
+    title: "Traffic Light Map",
+    description: "Interactive map showing suburb ratings across Sydney."
+  },
+  [DemoStep.TrafficLightMapView]: {
+    title: "Map View",
     description: "This map shows Sydney suburbs color-coded by investment potential, with green indicating high potential areas."
   },
-  [DemoStep.TrafficLightAnalysis]: {
-    title: "Suburb Metrics",
-    description: "Detailed metrics for each suburb, including liquidity, growth potential, infrastructure, and risk factors."
+  [DemoStep.TrafficLightMapSuburb]: {
+    title: "Suburb Selection",
+    description: "Select a suburb on the map to view detailed metrics."
   },
+  [DemoStep.TrafficLightAnalysis]: {
+    title: "Suburb Analysis",
+    description: "Detailed metrics for the selected suburb, including liquidity, growth potential, infrastructure, and risk factors."
+  },
+  [DemoStep.TrafficLightComparison]: {
+    title: "Suburb Comparison",
+    description: "Compare metrics across multiple suburbs to identify the best investment opportunities."
+  },
+
+  // Portfolio steps
   [DemoStep.PortfolioIntro]: {
     title: "Portfolio Management",
     description: "The Portfolio Management System tracks all loans and provides insights into portfolio performance."
   },
   [DemoStep.PortfolioImpact]: {
     title: "Portfolio Impact",
-    description: "See how the new loan will impact the overall portfolio metrics, including IRR, risk profile, and diversification."
+    description: "See how the new loan will impact the overall portfolio metrics."
+  },
+  [DemoStep.PortfolioImpactOverview]: {
+    title: "Impact Overview",
+    description: "High-level impact of the new loan on the portfolio."
+  },
+  [DemoStep.PortfolioImpactDiversification]: {
+    title: "Diversification Impact",
+    description: "Impact on portfolio diversification across suburbs and loan types."
+  },
+  [DemoStep.PortfolioImpactRisk]: {
+    title: "Risk Impact",
+    description: "Impact on portfolio risk metrics, including volatility and Sharpe ratio."
+  },
+  [DemoStep.PortfolioImpactDecision]: {
+    title: "Portfolio Decision",
+    description: "Portfolio-based recommendation for the loan application."
   },
   [DemoStep.PortfolioMetrics]: {
     title: "Portfolio Metrics",
     description: "Comprehensive metrics showing portfolio performance, allocation, and projected returns."
   },
+
+  // Simulation steps
   [DemoStep.SimulationIntro]: {
     title: "Simulation Engine",
     description: "The Simulation Engine allows us to model different scenarios and optimize portfolio allocation."
+  },
+  [DemoStep.SimulationScenarios]: {
+    title: "Simulation Scenarios",
+    description: "View different performance scenarios for the portfolio with this new loan."
   },
   [DemoStep.SimulationMonteCarlo]: {
     title: "Monte Carlo Simulation",
     description: "This simulation runs thousands of scenarios to project portfolio performance with statistical confidence intervals."
   },
-  [DemoStep.SimulationEfficientFrontier]: {
-    title: "Efficient Frontier Analysis",
-    description: "Modern Portfolio Theory analysis to find the optimal risk-return balance for the portfolio."
+  [DemoStep.SimulationSensitivity]: {
+    title: "Sensitivity Analysis",
+    description: "Analyze how sensitive the portfolio is to changes in different factors."
   },
+  [DemoStep.SimulationDecision]: {
+    title: "Simulation Decision",
+    description: "Simulation-based recommendation for the loan application."
+  },
+
+  // Executive Summary steps
+  [DemoStep.ExecutiveSummary]: {
+    title: "Executive Summary",
+    description: "Comprehensive overview of the platform's performance and insights."
+  },
+  [DemoStep.ExecutiveSummaryDashboard]: {
+    title: "Executive Dashboard",
+    description: "Key metrics and KPIs for executive decision-making."
+  },
+  [DemoStep.ExecutiveSummaryPortfolio]: {
+    title: "Portfolio Status",
+    description: "Current status and performance of the loan portfolio."
+  },
+  [DemoStep.ExecutiveSummaryPipeline]: {
+    title: "Loan Pipeline",
+    description: "Overview of pending loan applications and their status."
+  },
+  [DemoStep.ExecutiveSummaryRecommendations]: {
+    title: "Strategic Recommendations",
+    description: "AI-driven recommendations for portfolio optimization and growth."
+  },
+
+  // Complete
   [DemoStep.Complete]: {
     title: "Demo Complete",
     description: "You've seen the complete workflow of the Equihome Platform, from loan application to portfolio optimization."
