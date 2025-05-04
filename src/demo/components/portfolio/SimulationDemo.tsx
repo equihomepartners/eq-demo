@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Badge } from '../ui/badge';
-import { AlertCircle, CheckCircle, Calculator, BarChart2, TrendingUp, DollarSign, Percent, Shield, PieChart as PieChartIcon, RefreshCw, Layers, Briefcase, Zap, ArrowRight, LineChart as LineChartIcon, BarChart as BarChartIcon, Brain, MapPin } from 'lucide-react';
+import { AlertCircle, CheckCircle, Calculator, BarChart2, TrendingUp, DollarSign, Percent, Shield, PieChart as PieChartIcon, RefreshCw, Layers, Briefcase, Zap, ArrowRight, LineChart as LineChartIcon, BarChart as BarChartIcon, Brain, MapPin, Info } from 'lucide-react';
 import PieChart from './PieChart';
 import LineChart from './LineChart';
 import PortfolioChart from './PortfolioChart';
@@ -745,7 +745,23 @@ const SimulationDemo: React.FC = () => {
             </CardFooter>
           </Card>
 
-          {/* Blue guidance blurb temporarily removed */}
+          {/* Navigation guidance */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+            <div className="flex items-start">
+              <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                <Info className="h-5 w-5 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  You've completed the Simulation analysis. The next step is to review the Underwriting Decision based on all the analyses performed.
+                </p>
+                <p className="text-sm text-blue-700 mt-2">
+                  Click the "Decision" tab above to proceed to the Underwriting Decision.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Badge } from '../ui/badge';
-import { AlertCircle, CheckCircle, MapPin, TrendingUp, Shield, BarChart2, Building2, Brain, ListFilter, Map } from 'lucide-react';
+import { AlertCircle, CheckCircle, MapPin, TrendingUp, Shield, BarChart2, Building2, Brain, ListFilter, Map, Info } from 'lucide-react';
 import DemoContext from '../../context/DemoContext';
 import mockData, { mockSuburbData, mockLoanApplication } from '../../data/mockData';
 import EnhancedTrafficLightMap from './EnhancedTrafficLightMap';
@@ -302,7 +302,29 @@ const Analysis: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Blue guidance blurb temporarily removed */}
+                    {/* Navigation guidance */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                      <div className="flex items-start">
+                        <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                          <Info className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+                          <p className="text-sm text-blue-700 mt-1">
+                            You're viewing the Traffic Light Analysis overview. To explore more details:
+                          </p>
+                          <ul className="text-sm text-blue-700 mt-2 list-disc pl-5 space-y-1">
+                            <li>Click the "Metrics" tab to view detailed metrics for the suburb</li>
+                            <li>Click the "Forecast" tab to see growth projections</li>
+                            <li>Click the "ML Decision" tab to see the machine learning recommendation</li>
+                            <li>Click the "Decision Engine" tab to see the decision engine analysis</li>
+                          </ul>
+                          <p className="text-sm text-blue-700 mt-2">
+                            After exploring the Traffic Light Analysis, click the "Portfolio" tab above to see how this loan impacts the overall portfolio.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </TabsContent>
 

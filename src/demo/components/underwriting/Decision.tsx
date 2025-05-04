@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Badge } from '../ui/badge';
-import { AlertCircle, CheckCircle, FileText, Shield, BarChart2, Calculator, TrendingUp, Home, DollarSign, Calendar, Percent, PieChart, BarChart } from 'lucide-react';
+import { AlertCircle, CheckCircle, FileText, Shield, BarChart2, Calculator, TrendingUp, Home, DollarSign, Calendar, Percent, PieChart, BarChart, Info } from 'lucide-react';
 import { Bar, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import DemoContext from '../../context/DemoContext';
@@ -1203,14 +1203,19 @@ const Decision: React.FC = () => {
             </CardFooter>
           </Card>
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          {/* Navigation guidance */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
             <div className="flex items-start">
-              <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 mr-3" />
+              <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                <Info className="h-5 w-5 text-blue-600" />
+              </div>
               <div>
-                <h3 className="text-sm font-medium text-yellow-800">Next Steps</h3>
-                <p className="text-sm text-yellow-700 mt-1">
-                  The loan has been approved by the Underwriting System.
-                  The next step is to analyze the impact of this loan on the overall portfolio.
+                <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  You've completed the Underwriting Decision process. The loan has been approved by the Underwriting System.
+                </p>
+                <p className="text-sm text-blue-700 mt-2">
+                  Click the "Executive" tab above to proceed to the Executive Summary, which provides a comprehensive overview of the entire loan analysis process.
                 </p>
               </div>
             </div>

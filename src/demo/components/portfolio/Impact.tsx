@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Badge } from '../ui/badge';
-import { AlertCircle, CheckCircle, PieChart as PieChartIcon, BarChart2, TrendingUp, DollarSign, Percent, Shield, RefreshCw, BarChart as BarChartIcon, LineChart as LineChartIcon, Layers, Briefcase, Scale, Zap, ArrowRight } from 'lucide-react';
+import { AlertCircle, CheckCircle, PieChart as PieChartIcon, BarChart2, TrendingUp, DollarSign, Percent, Shield, RefreshCw, BarChart as BarChartIcon, LineChart as LineChartIcon, Layers, Briefcase, Scale, Zap, ArrowRight, Info } from 'lucide-react';
 import DemoContext from '../../context/DemoContext';
 import mockData, { mockPortfolioMetrics, mockPortfolioImpact } from '../../data/mockData';
 import PortfolioChart from './PortfolioChart';
@@ -781,7 +781,23 @@ const Impact: React.FC = () => {
             </CardFooter>
           </Card>
 
-          {/* Blue guidance blurb temporarily removed */}
+          {/* Navigation guidance */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+            <div className="flex items-start">
+              <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                <Info className="h-5 w-5 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  You've completed the Portfolio Impact analysis. The next step is to run simulations to see the long-term performance of the portfolio with this new loan.
+                </p>
+                <p className="text-sm text-blue-700 mt-2">
+                  Click the "Simulation" tab above to proceed to the Simulation Engine.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

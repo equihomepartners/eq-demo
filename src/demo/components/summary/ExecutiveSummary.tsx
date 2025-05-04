@@ -24,7 +24,8 @@ import {
   PieChart,
   Download,
   Printer,
-  Share2
+  Share2,
+  Info
 } from 'lucide-react';
 import DemoContext from '../../context/DemoContext';
 
@@ -550,6 +551,24 @@ const ExecutiveSummary: React.FC = () => {
                   <p className="text-sm text-blue-700 mt-1">
                     The loan has been approved and is ready for origination. The next steps include finalizing
                     documentation, conducting final verification checks, and proceeding with settlement.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation guidance */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+              <div className="flex items-start">
+                <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                  <Info className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+                  <p className="text-sm text-blue-700 mt-1">
+                    You've completed the entire loan analysis process! You can now click the "Complete" tab above to finish the demo.
+                  </p>
+                  <p className="text-sm text-blue-700 mt-2">
+                    Alternatively, you can go back to any previous tab to review the analysis or start over with a new loan application.
                   </p>
                 </div>
               </div>

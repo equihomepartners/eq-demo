@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '../components/ui/card';
-import { Building2, LineChart, Map, FileCheck, Calculator } from 'lucide-react';
+import { Building2, LineChart, Map, FileCheck, Calculator, Info } from 'lucide-react';
 
 const DemoIntro: React.FC = () => {
   return (
@@ -167,6 +167,24 @@ const DemoIntro: React.FC = () => {
         <p className="text-gray-600 italic">
           Note: This demo uses mock data and is isolated from the actual platform functionality.
         </p>
+      </div>
+
+      {/* Navigation guidance */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-8">
+        <div className="flex items-start">
+          <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+            <Info className="h-5 w-5 text-blue-600" />
+          </div>
+          <div>
+            <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+            <p className="text-sm text-blue-700 mt-1">
+              To proceed with the demo, click the "Application" tab above to start the loan application process.
+            </p>
+            <p className="text-sm text-blue-700 mt-2">
+              Throughout the demo, you'll find guidance like this at the bottom of each section to help you navigate.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

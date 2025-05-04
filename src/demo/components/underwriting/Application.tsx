@@ -5,7 +5,7 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { AlertCircle, CheckCircle, FileText, User, Home, DollarSign } from 'lucide-react';
+import { AlertCircle, CheckCircle, FileText, User, Home, DollarSign, Info } from 'lucide-react';
 import DemoContext from '../../context/DemoContext';
 import { mockLoanApplication } from '../../data/mockData';
 
@@ -535,7 +535,23 @@ const Application: React.FC = () => {
             </CardFooter>
           </Card>
 
-          {/* Blue guidance blurb temporarily removed */}
+          {/* Navigation guidance */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+            <div className="flex items-start">
+              <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                <Info className="h-5 w-5 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  The application has been submitted successfully. The next step is to analyze the property's suburb using the Traffic Light System.
+                </p>
+                <p className="text-sm text-blue-700 mt-2">
+                  Click the "Traffic Light" tab above to proceed to the Traffic Light Analysis.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

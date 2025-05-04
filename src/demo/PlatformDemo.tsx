@@ -423,12 +423,37 @@ const PlatformDemo: React.FC = () => {
                 <RefreshCw className="h-4 w-4 mr-2" />
                 Restart Demo
               </Button>
+
+              {/* Navigation guidance */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-12 max-w-3xl mx-auto text-left">
+                <div className="flex items-start">
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
+                    <Info className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-blue-900">Demo Summary</h3>
+                    <p className="text-sm text-blue-700 mt-1">
+                      Congratulations on completing the Equihome platform demo! You've experienced the full loan analysis workflow:
+                    </p>
+                    <ul className="text-sm text-blue-700 mt-2 list-disc pl-5 space-y-1">
+                      <li>Loan Application - Capturing borrower, property, and loan details</li>
+                      <li>Traffic Light Analysis - Evaluating suburbs using the Traffic Light System</li>
+                      <li>Portfolio Impact - Analyzing how the loan affects the overall portfolio</li>
+                      <li>Simulation - Running advanced simulations to project long-term performance</li>
+                      <li>Underwriting Decision - Making the final loan decision</li>
+                      <li>Executive Summary - Comprehensive overview of the entire analysis</li>
+                    </ul>
+                    <p className="text-sm text-blue-700 mt-2">
+                      You can click the "Restart Demo" button above to start over, or use the tabs at the top to revisit specific sections.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </TabsContent>
         </Tabs>
 
-                {/* Enhanced Navigation */}
-                <GuidedDemoNavigation />
+                {/* Navigation removed as requested */}
               </>
             )}
           </div>
