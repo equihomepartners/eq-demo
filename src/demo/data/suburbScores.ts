@@ -37,7 +37,7 @@ interface SuburbScore {
 }
 
 const suburbScores: Record<string, SuburbScore> = {
-  // Eastern Suburbs - Premium areas
+  // Eastern Suburbs - Premium areas (Green Zones)
   "VAUCLUSE": {
     score: 86,
     confidence: 92,
@@ -91,9 +91,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 82
   },
   "BONDI": {
-    score: 79,
+    score: 82,
     confidence: 88,
-    zone: 'yellow',
+    zone: 'green',
     liquidity_score: 85,
     liquidity_confidence: 90,
     safety_score: 82,
@@ -117,7 +117,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 84
   },
   "PADDINGTON": {
-    score: 78,
+    score: 75,
     confidence: 87,
     zone: 'yellow',
     liquidity_score: 83,
@@ -169,7 +169,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 85
   },
 
-  // Northern Suburbs
+  // Northern Suburbs - Harbor and Beaches (Green Zones)
   "MOSMAN": {
     score: 85,
     confidence: 91,
@@ -197,9 +197,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 83
   },
   "NEUTRAL BAY": {
-    score: 79,
+    score: 80,
     confidence: 87,
-    zone: 'yellow',
+    zone: 'green',
     liquidity_score: 78,
     liquidity_confidence: 85,
     safety_score: 85,
@@ -249,9 +249,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 86
   },
 
-  // Inner West - Mixed potential
+  // Inner West - Mostly Yellow/Orange
   "BALMAIN": {
-    score: 77,
+    score: 74,
     confidence: 85,
     zone: 'yellow',
     liquidity_score: 79,
@@ -264,7 +264,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 85
   },
   "MARRICKVILLE": {
-    score: 72,
+    score: 68,
     confidence: 83,
     zone: 'yellow',
     liquidity_score: 70,
@@ -277,7 +277,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 87
   },
   "NEWTOWN": {
-    score: 71,
+    score: 65,
     confidence: 82,
     zone: 'yellow',
     liquidity_score: 74,
@@ -290,7 +290,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 86
   },
   "SURRY HILLS": {
-    score: 74,
+    score: 70,
     confidence: 84,
     zone: 'yellow',
     liquidity_score: 77,
@@ -303,7 +303,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 84
   },
   "DULWICH HILL": {
-    score: 69,
+    score: 62,
     confidence: 80,
     zone: 'yellow',
     liquidity_score: 68,
@@ -316,7 +316,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 85
   },
   "ASHFIELD": {
-    score: 67,
+    score: 58,
     confidence: 79,
     zone: 'yellow',
     liquidity_score: 66,
@@ -329,7 +329,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 83
   },
   "SUMMER HILL": {
-    score: 70,
+    score: 60,
     confidence: 81,
     zone: 'yellow',
     liquidity_score: 69,
@@ -342,7 +342,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 84
   },
   "PETERSHAM": {
-    score: 71,
+    score: 63,
     confidence: 82,
     zone: 'yellow',
     liquidity_score: 70,
@@ -355,7 +355,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 85
   },
   "STANMORE": {
-    score: 73,
+    score: 66,
     confidence: 83,
     zone: 'yellow',
     liquidity_score: 72,
@@ -368,9 +368,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 86
   },
 
-  // City Fringe - Mixed with growth potential
+  // City Fringe - Yellow/Orange
   "ALEXANDRIA": {
-    score: 75,
+    score: 69,
     confidence: 84,
     zone: 'yellow',
     liquidity_score: 73,
@@ -383,7 +383,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 88
   },
   "WATERLOO": {
-    score: 72,
+    score: 64,
     confidence: 82,
     zone: 'yellow',
     liquidity_score: 70,
@@ -396,7 +396,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 89
   },
   "ZETLAND": {
-    score: 73,
+    score: 67,
     confidence: 83,
     zone: 'yellow',
     liquidity_score: 71,
@@ -409,7 +409,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 90
   },
   "REDFERN": {
-    score: 70,
+    score: 62,
     confidence: 81,
     zone: 'yellow',
     liquidity_score: 69,
@@ -422,9 +422,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 87
   },
 
-  // Western Sydney - Growth centers with risk
+  // Western Sydney - Mostly Red
   "PARRAMATTA": {
-    score: 65,
+    score: 55,
     confidence: 78,
     zone: 'yellow',
     liquidity_score: 63,
@@ -437,7 +437,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 85
   },
   "BLACKTOWN": {
-    score: 48,
+    score: 38,
     confidence: 70,
     zone: 'red',
     liquidity_score: 50,
@@ -450,9 +450,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 76
   },
   "LIVERPOOL": {
-    score: 52,
+    score: 42,
     confidence: 72,
-    zone: 'yellow',
+    zone: 'red',
     liquidity_score: 53,
     liquidity_confidence: 70,
     safety_score: 48,
@@ -463,7 +463,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 78
   },
   "PENRITH": {
-    score: 46,
+    score: 36,
     confidence: 68,
     zone: 'red',
     liquidity_score: 48,
@@ -476,9 +476,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 74
   },
 
-  // South-Western Sydney - Higher risk areas
+  // South-Western Sydney - All Red
   "MOUNT DRUITT": {
-    score: 38,
+    score: 28,
     confidence: 65,
     zone: 'red',
     liquidity_score: 40,
@@ -491,7 +491,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 72
   },
   "AUBURN": {
-    score: 45,
+    score: 35,
     confidence: 67,
     zone: 'red',
     liquidity_score: 47,
@@ -504,7 +504,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 73
   },
   "GRANVILLE": {
-    score: 47,
+    score: 37,
     confidence: 68,
     zone: 'red',
     liquidity_score: 49,
@@ -517,7 +517,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 74
   },
   "MERRYLANDS": {
-    score: 49,
+    score: 39,
     confidence: 69,
     zone: 'red',
     liquidity_score: 51,
@@ -530,9 +530,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 75
   },
   "BANKSTOWN": {
-    score: 51,
+    score: 41,
     confidence: 70,
-    zone: 'yellow',
+    zone: 'red',
     liquidity_score: 53,
     liquidity_confidence: 68,
     safety_score: 48,
@@ -543,7 +543,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 76
   },
   "FAIRFIELD": {
-    score: 43,
+    score: 33,
     confidence: 66,
     zone: 'red',
     liquidity_score: 45,
@@ -556,7 +556,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 73
   },
   "CABRAMATTA": {
-    score: 44,
+    score: 34,
     confidence: 67,
     zone: 'red',
     liquidity_score: 46,
@@ -569,9 +569,9 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 74
   },
 
-  // Outer suburbs - Mixed with lower confidence
+  // Outer suburbs - Mostly Red with some Yellow
   "CAMPBELLTOWN": {
-    score: 45,
+    score: 35,
     confidence: 64,
     zone: 'red',
     liquidity_score: 47,
@@ -584,7 +584,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 70
   },
   "HORNSBY": {
-    score: 63,
+    score: 53,
     confidence: 75,
     zone: 'yellow',
     liquidity_score: 65,
@@ -597,7 +597,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 72
   },
   "CASTLE HILL": {
-    score: 67,
+    score: 57,
     confidence: 77,
     zone: 'yellow',
     liquidity_score: 65,
@@ -610,7 +610,7 @@ const suburbScores: Record<string, SuburbScore> = {
     growth_confidence: 74
   },
   "CRONULLA": {
-    score: 75,
+    score: 65,
     confidence: 84,
     zone: 'yellow',
     liquidity_score: 77,

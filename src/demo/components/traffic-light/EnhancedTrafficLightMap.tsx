@@ -49,7 +49,7 @@ function generateDiverseSuburbScore(name: string): {
   const baseRandom = getConsistentRandom(name);
 
   // Generate a base score with extreme bias toward yellow and red
-  // This creates almost no green zones outside of explicitly defined Eastern suburbs
+  // This creates NO green zones outside of explicitly defined Eastern suburbs
   let baseScore: number;
 
   // Check if this is a western suburb based on name patterns
@@ -59,33 +59,39 @@ function generateDiverseSuburbScore(name: string): {
     'HEIGHTS', 'CREEK', 'BURY', 'TOWN', 'DALE', 'FORD', 'BRIDGE'
   ];
 
-  const isLikelyWestern = westernSuburbPatterns.some(pattern => name.includes(pattern));
+  // Check if this is an eastern suburb or northern beaches
+  const easternSuburbPatterns = [
+    'EAST', 'POINT', 'BEACH', 'BAY', 'HARBOUR', 'COVE', 'NORTH'
+  ];
 
-  // Make green zones extremely rare, especially in western areas
-  if (baseRandom < 0.005 && !isLikelyWestern) {
-    // Only 0.5% chance of a high score (green zone) for non-western suburbs
+  const isLikelyWestern = westernSuburbPatterns.some(pattern => name.includes(pattern));
+  const isLikelyEastern = easternSuburbPatterns.some(pattern => name.includes(pattern));
+
+  // No randomly generated green zones at all - only explicitly defined ones
+  if (false) {
+    // This branch is never taken - no random green zones
     baseScore = 80 + Math.floor(baseRandom * 100) % 11;
-  } else if (baseRandom < 0.55) {
-    // 55% chance of a low score (red zone), higher if western suburb
+  } else if (isLikelyWestern || baseRandom < 0.65) {
+    // 65% chance of a low score (red zone), much higher if western suburb
     baseScore = 20 + Math.floor(baseRandom * 100) % 25;
   } else {
-    // 44.5% chance of a middle score (yellow zone) with wide variation
+    // 35% chance of a middle score (yellow zone) with wide variation
     // Create more diversity within yellow zones
-    if (baseRandom < 0.75) {
+    if (baseRandom < 0.80) {
       // Lower yellow (closer to red)
-      baseScore = 45 + Math.floor(baseRandom * 100) % 12;
-    } else if (baseRandom < 0.90) {
+      baseScore = 45 + Math.floor(baseRandom * 100) % 10;
+    } else if (baseRandom < 0.95) {
       // Mid yellow
-      baseScore = 52 + Math.floor(baseRandom * 100) % 13;
+      baseScore = 50 + Math.floor(baseRandom * 100) % 10;
     } else {
       // Upper yellow (but not green)
-      baseScore = 60 + Math.floor(baseRandom * 100) % 15;
+      baseScore = 55 + Math.floor(baseRandom * 100) % 15;
     }
   }
 
-  // Special case: Ensure western suburbs almost never get green scores
-  if (isLikelyWestern && baseScore > 75) {
-    baseScore = 60 + Math.floor(baseRandom * 100) % 15;
+  // Special case: Ensure western suburbs are almost always red
+  if (isLikelyWestern) {
+    baseScore = Math.min(baseScore, 44);
   }
 
   // Determine zone based on score
