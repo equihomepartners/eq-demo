@@ -171,8 +171,8 @@ const DemoIntro: React.FC = () => {
           in production, and there may be some inconsistencies within the data.
         </p>
         <p className="text-amber-700 mt-3">
-          All data shown is mock data, isolated from actual platform functionality, and should not be used for
-          investment decisions or performance evaluation.
+          All data shown is mock data, isolated from actual platform functionality, and is not representative of
+          investment thesis and actual decision making.
         </p>
       </div>
 
