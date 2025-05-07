@@ -639,7 +639,7 @@ const Impact: React.FC = () => {
                             <div className="bg-gray-50 p-3 rounded-lg">
                               <div className="flex items-center">
                                 <Shield className="h-5 w-5 text-green-600 mr-2" />
-                                <span className="text-sm font-medium">Low LTV (18.80%)</span>
+                                <span className="text-sm font-medium">Low LTV (11.90%)</span>
                               </div>
                               <p className="text-xs text-gray-500 mt-1">
                                 Significantly below portfolio average of 22.3%
@@ -730,8 +730,8 @@ const Impact: React.FC = () => {
                             <div>
                               <h5 className="text-sm font-medium text-gray-800">Concentration Warning: {demoState.application.property.suburb}</h5>
                               <p className="text-xs text-gray-600 mt-1">
-                                The loan increases {demoState.application.property.suburb} concentration to 21%, which is approaching
-                                the recommended maximum of 25% for any single suburb.
+                                The loan increases {demoState.application.property.suburb} concentration to 21%, which is within
+                                the acceptable range but should be monitored for future loans.
                               </p>
                             </div>
                           </div>
