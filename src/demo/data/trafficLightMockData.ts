@@ -17,30 +17,30 @@ export const trafficLightMockData = {
     previousRisk: 26.8,
     riskChange: -8.2,
   },
-  
-  // Price trends data
+
+  // Price trends data - more realistic with volatility patterns
   priceTrends: [
     { month: 'Jan', sydney: 1250000, greenZones: 1450000, yellowZones: 1150000, redZones: 950000 },
-    { month: 'Feb', sydney: 1260000, greenZones: 1470000, yellowZones: 1155000, redZones: 945000 },
-    { month: 'Mar', sydney: 1265000, greenZones: 1485000, yellowZones: 1160000, redZones: 940000 },
-    { month: 'Apr', sydney: 1270000, greenZones: 1500000, yellowZones: 1165000, redZones: 935000 },
-    { month: 'May', sydney: 1275000, greenZones: 1515000, yellowZones: 1170000, redZones: 930000 },
-    { month: 'Jun', sydney: 1280000, greenZones: 1530000, yellowZones: 1175000, redZones: 925000 },
-    { month: 'Jul', sydney: 1285000, greenZones: 1545000, yellowZones: 1180000, redZones: 920000 },
-    { month: 'Aug', sydney: 1290000, greenZones: 1560000, yellowZones: 1185000, redZones: 915000 },
-    { month: 'Sep', sydney: 1295000, greenZones: 1575000, yellowZones: 1190000, redZones: 910000 },
-    { month: 'Oct', sydney: 1300000, greenZones: 1590000, yellowZones: 1195000, redZones: 905000 },
-    { month: 'Nov', sydney: 1305000, greenZones: 1605000, yellowZones: 1200000, redZones: 900000 },
-    { month: 'Dec', sydney: 1310000, greenZones: 1620000, yellowZones: 1205000, redZones: 895000 },
+    { month: 'Feb', sydney: 1258000, greenZones: 1465000, yellowZones: 1145000, redZones: 930000 },
+    { month: 'Mar', sydney: 1265000, greenZones: 1482000, yellowZones: 1160000, redZones: 965000 },
+    { month: 'Apr', sydney: 1270000, greenZones: 1498000, yellowZones: 1155000, redZones: 925000 },
+    { month: 'May', sydney: 1275000, greenZones: 1515000, yellowZones: 1170000, redZones: 980000 },
+    { month: 'Jun', sydney: 1280000, greenZones: 1530000, yellowZones: 1165000, redZones: 940000 },
+    { month: 'Jul', sydney: 1285000, greenZones: 1545000, yellowZones: 1180000, redZones: 910000 },
+    { month: 'Aug', sydney: 1290000, greenZones: 1560000, yellowZones: 1172000, redZones: 975000 },
+    { month: 'Sep', sydney: 1295000, greenZones: 1575000, yellowZones: 1190000, redZones: 920000 },
+    { month: 'Oct', sydney: 1300000, greenZones: 1590000, yellowZones: 1185000, redZones: 890000 },
+    { month: 'Nov', sydney: 1305000, greenZones: 1605000, yellowZones: 1200000, redZones: 935000 },
+    { month: 'Dec', sydney: 1310000, greenZones: 1620000, yellowZones: 1195000, redZones: 905000 },
   ],
-  
+
   // Zone distribution
   zoneDistribution: {
-    green: 45,
+    green: 15,
     yellow: 35,
-    red: 20,
+    red: 50,
   },
-  
+
   // Top suburbs
   topSuburbs: [
     { name: 'Bondi', score: 92, liquidity: 95, growth: 88 },
@@ -52,14 +52,14 @@ export const trafficLightMockData = {
     { name: 'Surry Hills', score: 82, liquidity: 84, growth: 80 },
     { name: 'Neutral Bay', score: 80, liquidity: 82, growth: 78 },
   ],
-  
+
   // Metrics by zone
   metricsByZone: [
     { zone: 'Green', liquidity: 92, growth: 88, infrastructure: 90, risk: 22 },
     { zone: 'Yellow', liquidity: 75, growth: 72, infrastructure: 78, risk: 45 },
     { zone: 'Red', liquidity: 58, growth: 55, infrastructure: 62, risk: 68 },
   ],
-  
+
   // Suburbs data
   suburbs: [
     {

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  MapPin, 
-  TrendingUp, 
-  BarChart2, 
-  Shield, 
-  Building, 
-  Users, 
+import {
+  MapPin,
+  TrendingUp,
+  BarChart2,
+  Shield,
+  Building,
+  Users,
   DollarSign,
   Droplets,
   Zap
@@ -20,7 +20,7 @@ interface EnhancedTrafficLightDashboardProps {
   onSuburbSelect?: (suburb: string) => void;
 }
 
-const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps> = ({ 
+const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps> = ({
   trafficLightData,
   selectedSuburb,
   onSuburbSelect
@@ -169,7 +169,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
       cell: ({ row }: any) => {
         const zone = row.getValue('zone');
         let zoneColor = '';
-        
+
         switch (zone) {
           case 'Green':
             zoneColor = 'bg-green-100 text-green-800';
@@ -183,7 +183,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
           default:
             zoneColor = 'bg-gray-100 text-gray-800';
         }
-        
+
         return (
           <span className={`px-2 py-1 rounded-full text-xs font-medium ${zoneColor}`}>
             {zone}
@@ -260,7 +260,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
         kpis={kpis}
         columns={4}
       />
-      
+
       {/* Selected Suburb KPIs (if a suburb is selected) */}
       {suburbData && (
         <KpiDashboard
@@ -270,7 +270,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
           columns={4}
         />
       )}
-      
+
       {/* Charts Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Price Trends Chart */}
@@ -315,15 +315,19 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
               formatYAxis={(value) => `$${(value / 1000).toFixed(0)}k`}
               formatTooltip={(value) => [`$${(value / 1000).toFixed(0)}k`, 'Median Price']}
             />
+            <div className="mt-2 text-xs text-gray-500">
+              <p>Note: Green zones show stable growth with low volatility, yellow zones follow Sydney average with moderate volatility,
+              while red zones show higher volatility and underperformance.</p>
+            </div>
           </div>
         </EnhancedCard>
-        
+
         {/* Zone Distribution Chart */}
         <EnhancedCard variant="elevated">
           <div className="p-4">
             <AdvancedPieChart
-              title="Zone Distribution"
-              subtitle="Distribution of suburbs by traffic light zone"
+              title="System-wide Zone Distribution"
+              subtitle="Distribution of all suburbs by traffic light classification"
               data={zoneDistributionData}
               height={300}
               innerRadius={60}
@@ -332,7 +336,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
             />
           </div>
         </EnhancedCard>
-        
+
         {/* Top Suburbs Chart */}
         <EnhancedCard variant="elevated">
           <div className="p-4">
@@ -372,7 +376,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
             />
           </div>
         </EnhancedCard>
-        
+
         {/* Metric Comparison Chart */}
         <EnhancedCard variant="elevated">
           <div className="p-4">
@@ -417,7 +421,7 @@ const EnhancedTrafficLightDashboard: React.FC<EnhancedTrafficLightDashboardProps
           </div>
         </EnhancedCard>
       </div>
-      
+
       {/* Suburbs Table */}
       <EnhancedCard variant="elevated">
         <div className="p-4">

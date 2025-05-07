@@ -62,7 +62,7 @@ const MLDecisionEngine: React.FC<MLDecisionEngineProps> = ({
             explanation: 'The property is located in a green zone suburb with strong fundamentals and excellent growth prospects. The borrower profile is strong, and the loan parameters are within acceptable ranges.',
             factors: [
               { name: 'Suburb Zone', value: 'Green', score: 95, impact: 'positive' },
-              { name: 'Growth Potential', value: '6.2%', score: 88, impact: 'positive' },
+              { name: 'Growth Potential', value: '5.9%', score: 88, impact: 'positive' },
               { name: 'Liquidity', value: 'High', score: 92, impact: 'positive' },
               { name: 'Infrastructure', value: 'Excellent', score: 88, impact: 'positive' },
               { name: 'Property Value', value: '$4,200,000', score: 90, impact: 'positive' },
@@ -78,7 +78,7 @@ const MLDecisionEngine: React.FC<MLDecisionEngineProps> = ({
             },
             predictions: {
               shortTerm: {
-                growth: 6.2,
+                growth: 5.9,
                 confidence: 88,
                 factors: [
                   'Strong market demand',
@@ -87,7 +87,7 @@ const MLDecisionEngine: React.FC<MLDecisionEngineProps> = ({
                 ]
               },
               mediumTerm: {
-                growth: 5.8,
+                growth: 5.6,
                 confidence: 82,
                 factors: [
                   'Continued infrastructure development',
@@ -96,7 +96,7 @@ const MLDecisionEngine: React.FC<MLDecisionEngineProps> = ({
                 ]
               },
               longTerm: {
-                growth: 5.5,
+                growth: 5.25,
                 confidence: 75,
                 factors: [
                   'Long-term population growth',
@@ -106,7 +106,7 @@ const MLDecisionEngine: React.FC<MLDecisionEngineProps> = ({
               }
             },
             aiInsights: [
-              'This property is in a premium location with excellent long-term growth prospects.',
+              'This property is in a premium location with excellent long-term growth prospects of 5.9% p.a.',
               'The suburb has consistently outperformed the Sydney average over the past decade.',
               'The property\'s high-end features and condition make it an attractive investment.',
               'The borrower\'s strong financial position minimizes default risk.'

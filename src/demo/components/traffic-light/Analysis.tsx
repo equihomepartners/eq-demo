@@ -764,7 +764,7 @@ const Analysis: React.FC = () => {
                           <div className="text-center">
                             <span className="text-sm text-gray-500">Medium-Term (3 Years)</span>
                             <div className="text-2xl font-bold text-green-600 mt-2">
-                              +{(mockSuburbData.metrics.growth.forecast * 0.9 * 3).toFixed(1)}%
+                              +16.8%
                             </div>
                             <div className="text-xs text-gray-500 mt-1">
                               Confidence: {(mockSuburbData.metrics.growth.confidence * 0.9).toFixed(0)}%
@@ -775,7 +775,7 @@ const Analysis: React.FC = () => {
                           <div className="text-center">
                             <span className="text-sm text-gray-500">Long-Term (10 Years)</span>
                             <div className="text-2xl font-bold text-green-600 mt-2">
-                              +{(mockSuburbData.metrics.growth.forecast * 0.8 * 10).toFixed(1)}%
+                              +52.5%
                             </div>
                             <div className="text-xs text-gray-500 mt-1">
                               Confidence: {(mockSuburbData.metrics.growth.confidence * 0.7).toFixed(0)}%
@@ -913,7 +913,7 @@ const Analysis: React.FC = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <div className="text-sm text-gray-500">
-                <span className="font-medium">Analysis Date:</span> {new Date().toLocaleDateString()}
+                <span className="font-medium">Analysis Date:</span> January 15, 2020
               </div>
               <Button variant="outline" onClick={resetAnalysis}>
                 Reset Analysis

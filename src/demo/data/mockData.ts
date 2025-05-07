@@ -89,8 +89,8 @@ export const mockSuburbData = {
   riskScore: 18,
   metrics: {
     growth: {
-      historical: 7.8,
-      forecast: 6.2,
+      historical: 7.9,
+      forecast: 5.9,
       confidence: 88
     },
     liquidity: {
@@ -415,9 +415,9 @@ export const mockPortfolioImpact = {
     mosmanAllocation: 18
   },
   afterLoan: {
-    totalValue: 25850000,
+    totalValue: 25500000,
     totalLoans: 13,
-    averageLoanSize: 1988462,
+    averageLoanSize: 1961538,
     averageInterestRate: 5.23,
     averageLTV: 22.3,
     irr: 16.9,
@@ -426,9 +426,9 @@ export const mockPortfolioImpact = {
     mosmanAllocation: 21
   },
   impact: {
-    totalValue: '+850000',
+    totalValue: '+500000',
     totalLoans: '+1',
-    averageLoanSize: '-94871',
+    averageLoanSize: '-121795',
     averageInterestRate: '+0.03',
     averageLTV: '-0.2',
     irr: '+0.1',
@@ -653,8 +653,8 @@ export const mockPipelineData = {
         value: 4200000,
         suburb: 'Mosman'
       },
-      loanAmount: 850000,
-      ltv: 20.24,
+      loanAmount: 500000,
+      ltv: 11.90,
       score: 92,
       rank: 2,
       status: 'New',

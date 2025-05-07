@@ -115,7 +115,7 @@ const Impact: React.FC = () => {
           <CardHeader>
             <CardTitle>Portfolio Impact Analysis</CardTitle>
             <CardDescription>
-              Analyze the impact of adding the {demoState.application.property.suburb} loan to the portfolio
+              Analyze the impact of adding the {demoState.application.property.suburb} loan to the portfolio (January 2020)
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -169,7 +169,8 @@ const Impact: React.FC = () => {
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Portfolio Impact Analysis</h3>
                 <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                   The Portfolio Management System will analyze the impact of adding this loan to the portfolio,
-                  including changes to key metrics, diversification, and overall performance.
+                  including changes to key metrics, diversification, and overall performance. This analysis
+                  demonstrates how the platform evaluates loans in real-time to optimize portfolio allocation.
                 </p>
                 <Button
                   onClick={analyzePortfolioImpact}
@@ -188,7 +189,7 @@ const Impact: React.FC = () => {
             <CardHeader>
               <CardTitle>Portfolio Impact Analysis Results</CardTitle>
               <CardDescription>
-                Impact of adding the {demoState.application.property.suburb} loan to the portfolio
+                Impact of adding the {demoState.application.property.suburb} loan to the portfolio (January 2020)
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -325,7 +326,7 @@ const Impact: React.FC = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="bg-gray-50 p-6 rounded-lg">
-                        <h4 className="text-lg font-medium text-gray-900 mb-4">Zone Allocation</h4>
+                        <h4 className="text-lg font-medium text-gray-900 mb-4">Portfolio Allocation by Zone</h4>
                         <div className="flex items-center justify-center h-48">
                           <div className="text-center text-gray-500">
                             <PieChart
@@ -773,7 +774,7 @@ const Impact: React.FC = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <div className="text-sm text-gray-500">
-                <span className="font-medium">Analysis Date:</span> {new Date().toLocaleDateString()}
+                <span className="font-medium">Analysis Date:</span> January 15, 2020
               </div>
               <Button variant="outline" onClick={resetAnalysis}>
                 Reset Analysis
