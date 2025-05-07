@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
-import Map, { Source, Layer, NavigationControl, Popup } from 'react-map-gl';
+import Map, { Source, Layer, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import initialGeoJSON, { fetchSydneySuburbBoundaries } from '../../data/sydneySuburbBoundaries';
 import suburbScores from '../../data/suburbScores';
@@ -498,6 +498,13 @@ const EnhancedTrafficLightMap: React.FC<EnhancedTrafficLightMapProps> = ({
           interactiveLayerIds={['suburb-fill']}
           onClick={handleClick}
           cursor="pointer"
+          scrollZoom={false}
+          dragRotate={false}
+          dragPan={false}
+          touchZoom={false}
+          doubleClickZoom={false}
+          touchPitch={false}
+          keyboard={false}
         >
           <Source id="suburbs" type="geojson" data={processedData}>
             <Layer {...fillLayer as any} />
@@ -536,7 +543,7 @@ const EnhancedTrafficLightMap: React.FC<EnhancedTrafficLightMapProps> = ({
             </div>
           </Popup>
 
-          <NavigationControl position="top-right" />
+
         </Map>
 
         {/* Map Legend */}
