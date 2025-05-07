@@ -9,7 +9,7 @@ import mockData, { mockPortfolioMetrics, mockPortfolioImpact } from '../../data/
 import PortfolioChart from './PortfolioChart';
 import PieChart from './PieChart';
 import LineChart from './LineChart';
-import LoanTermChart from './LoanTermChart';
+import LTVDistributionChart from './LTVDistributionChart';
 import { EnhancedPortfolioDashboard } from '../enhanced';
 
 const Impact: React.FC = () => {
@@ -344,15 +344,15 @@ const Impact: React.FC = () => {
                       </div>
 
                       <div className="bg-gray-50 p-6 rounded-lg">
-                        <h4 className="text-lg font-medium text-gray-900 mb-4">Loan Term Distribution</h4>
+                        <h4 className="text-lg font-medium text-gray-900 mb-4">LTV Distribution</h4>
                         <div className="flex items-center justify-center h-48">
                           <div className="text-center text-gray-500 w-full">
-                            <LoanTermChart
+                            <LTVDistributionChart
                               data={{
-                                terms: ['5 Years', '7 Years', '10 Years', '15 Years', '20 Years'],
-                                counts: [4, 12, 18, 6, 2],
-                                percentages: [10, 28, 43, 14, 5],
-                                colors: ['#818cf8', '#a78bfa', '#c084fc', '#e879f9', '#f472b6']
+                                ranges: ['0-10%', '10-15%', '15-20%', '20-25%', '25-30%'],
+                                counts: [3, 8, 15, 12, 4],
+                                percentages: [7, 19, 36, 29, 9],
+                                colors: ['#4ade80', '#a3e635', '#facc15', '#fb923c', '#f87171']
                               }}
                               height={150}
                             />
@@ -368,8 +368,8 @@ const Impact: React.FC = () => {
                           <h3 className="text-sm font-medium text-yellow-800">Allocation Insights</h3>
                           <p className="text-sm text-yellow-700 mt-1">
                             The {demoState.application.property.suburb} allocation has increased to {mockPortfolioImpact.afterLoan.mosmanAllocation}% of the portfolio.
-                            Additionally, this 10-year term loan adds to the concentration in the 7-10 year term range (now 71% of portfolio).
-                            Consider diversifying future loans across different suburbs and term lengths.
+                            This loan's low LTV ratio (11.90%) improves the portfolio's risk profile by increasing the proportion of loans in the 10-15% LTV range.
+                            Consider maintaining a balanced distribution of LTV ratios while diversifying across different suburbs.
                           </p>
                         </div>
                       </div>
@@ -733,8 +733,8 @@ const Impact: React.FC = () => {
                               <h5 className="text-sm font-medium text-gray-800">Concentration Analysis</h5>
                               <p className="text-xs text-gray-600 mt-1">
                                 The loan increases {demoState.application.property.suburb} concentration to 21%, which is within
-                                the acceptable range. The 10-year term adds to the concentration in medium-term loans (7-10 years),
-                                but this aligns with our portfolio strategy for single-family homes.
+                                the acceptable range. The low LTV ratio (11.90%) improves our portfolio's risk profile by increasing
+                                the proportion of lower-risk loans, aligning with our conservative lending strategy for single-family homes.
                               </p>
                             </div>
                           </div>
