@@ -145,7 +145,7 @@ const Analysis: React.FC = () => {
             <CardHeader>
               <div className="flex justify-between items-center">
                 <div>
-                  <CardTitle>Suburb Analysis Results</CardTitle>
+                  <CardTitle>Suburb and Property Analysis Results</CardTitle>
                   <CardDescription>
                     Analysis of {mockSuburbData.suburb}, {demoState.application.property.state} {mockSuburbData.postcode}
                   </CardDescription>
@@ -192,9 +192,9 @@ const Analysis: React.FC = () => {
                         <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full mr-3">
                           <DollarSign className="h-5 w-5 text-blue-600" />
                         </div>
-                        <div>
+                        <div className="w-full">
                           <h4 className="text-sm font-medium text-blue-900">PropTrack AVM Report</h4>
-                          <div className="mt-2 grid grid-cols-2 gap-4">
+                          <div className="mt-2 grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div>
                               <p className="text-xs text-blue-700">Property Value:</p>
                               <p className="text-sm font-semibold text-blue-900">${demoState.application.property.originalValue.toLocaleString()}</p>
@@ -203,10 +203,129 @@ const Analysis: React.FC = () => {
                               <p className="text-xs text-blue-700">Risk Adjustment:</p>
                               <p className="text-sm font-semibold text-blue-900">-5.00%</p>
                             </div>
+                            <div>
+                              <p className="text-xs text-blue-700">Adjusted Value:</p>
+                              <p className="text-sm font-semibold text-blue-900">${(demoState.application.property.originalValue * 0.95).toLocaleString()}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-blue-700">Confidence Level:</p>
+                              <p className="text-sm font-semibold text-blue-900">High (92%)</p>
+                            </div>
                           </div>
                           <p className="text-xs text-blue-600 mt-2">
                             Automated Valuation Model report for {demoState.application.property.address}, {demoState.application.property.suburb}
                           </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Property Transaction History */}
+                    <div className="bg-gray-50 p-4 rounded-lg mb-6">
+                      <h4 className="text-sm font-medium text-gray-900 mb-4">Property Transaction History</h4>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-100">
+                            <tr>
+                              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Transaction Type</th>
+                              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Growth</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">March 2020</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">Sale</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">$2,800,000</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-green-600">+239.4%</td>
+                            </tr>
+                            <tr>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">October 1998</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">Sale</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">$825,000</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-green-600">+10.0%</td>
+                            </tr>
+                            <tr>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">August 1997</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">Sale</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">$750,000</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">Initial</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    {/* Property Value History Chart */}
+                    <div className="bg-white border border-gray-200 p-4 rounded-lg mb-6">
+                      <h4 className="text-sm font-medium text-gray-900 mb-4">Property Value History (20 Years)</h4>
+                      <div className="h-64 relative">
+                        {/* Simplified chart representation */}
+                        <div className="absolute inset-0 flex items-end">
+                          {/* Chart bars/line representation */}
+                          <div className="w-full h-full relative">
+                            {/* Y-axis labels */}
+                            <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-500">
+                              <span>$3M</span>
+                              <span>$2.5M</span>
+                              <span>$2M</span>
+                              <span>$1.5M</span>
+                              <span>$1M</span>
+                              <span>$0.5M</span>
+                              <span>$0</span>
+                            </div>
+
+                            {/* Chart area */}
+                            <div className="ml-10 h-full relative">
+                              {/* Chart line */}
+                              <div className="absolute bottom-0 left-0 w-full h-full">
+                                <svg className="w-full h-full">
+                                  <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                      <stop offset="0%" stopColor="rgba(59, 130, 246, 0.5)" />
+                                      <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                                    </linearGradient>
+                                  </defs>
+                                  {/* Area under the curve */}
+                                  <path
+                                    d="M0,224 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,0 L700,224 L0,224 Z"
+                                    fill="url(#gradient)"
+                                  />
+                                  {/* Line */}
+                                  <path
+                                    d="M0,224 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,0"
+                                    fill="none"
+                                    stroke="#3b82f6"
+                                    strokeWidth="2"
+                                  />
+                                  {/* Data points */}
+                                  <circle cx="0" cy="224" r="4" fill="#3b82f6" />
+                                  <circle cx="200" cy="180" r="4" fill="#3b82f6" />
+                                  <circle cx="700" cy="0" r="4" fill="#3b82f6" />
+                                </svg>
+                              </div>
+
+                              {/* X-axis labels */}
+                              <div className="absolute bottom-0 left-0 w-full flex justify-between text-xs text-gray-500 transform translate-y-6">
+                                <span>1997</span>
+                                <span>2002</span>
+                                <span>2007</span>
+                                <span>2012</span>
+                                <span>2017</span>
+                                <span>2022</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-8 grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-xs text-gray-500">Historical Growth Rate (CAGR)</p>
+                          <p className="text-sm font-medium text-gray-900">7.90% p.a.</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Forecast Growth Rate</p>
+                          <p className="text-sm font-medium text-gray-900">5.90% p.a.</p>
                         </div>
                       </div>
                     </div>
@@ -224,6 +343,133 @@ const Analysis: React.FC = () => {
                       />
                     </div>
 
+                    {/* Property Metrics Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg mb-6">
+                      <h4 className="text-sm font-medium text-gray-900 mb-4">Property Metrics</h4>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                          <p className="text-xs text-gray-500">Property Type</p>
+                          <p className="text-sm font-medium text-gray-900 capitalize">{demoState.application.property.type}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Land Size</p>
+                          <p className="text-sm font-medium text-gray-900">676 sqm</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Building Size</p>
+                          <p className="text-sm font-medium text-gray-900">271 sqm</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Year Built</p>
+                          <p className="text-sm font-medium text-gray-900">1998</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Bedrooms</p>
+                          <p className="text-sm font-medium text-gray-900">{demoState.application.property.bedrooms}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Bathrooms</p>
+                          <p className="text-sm font-medium text-gray-900">{demoState.application.property.bathrooms}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Condition</p>
+                          <p className="text-sm font-medium text-gray-900">Excellent</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Last Renovation</p>
+                          <p className="text-sm font-medium text-gray-900">2018</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Comparable Properties Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg mb-6">
+                      <h4 className="text-sm font-medium text-gray-900 mb-4">Comparable Properties</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-white p-3 rounded-md shadow-sm">
+                          <p className="text-xs text-gray-500">38 Mosman Street, Mosman</p>
+                          <p className="text-sm font-medium text-gray-900">$2,750,000 (Mar 2023)</p>
+                          <div className="mt-2 flex justify-between text-xs text-gray-500">
+                            <span>4 bed</span>
+                            <span>3 bath</span>
+                            <span>680 sqm</span>
+                          </div>
+                        </div>
+                        <div className="bg-white p-3 rounded-md shadow-sm">
+                          <p className="text-xs text-gray-500">15 Raglan Street, Mosman</p>
+                          <p className="text-sm font-medium text-gray-900">$2,950,000 (Nov 2022)</p>
+                          <div className="mt-2 flex justify-between text-xs text-gray-500">
+                            <span>4 bed</span>
+                            <span>2 bath</span>
+                            <span>710 sqm</span>
+                          </div>
+                        </div>
+                        <div className="bg-white p-3 rounded-md shadow-sm">
+                          <p className="text-xs text-gray-500">7 Harnett Avenue, Mosman</p>
+                          <p className="text-sm font-medium text-gray-900">$2,680,000 (Feb 2023)</p>
+                          <div className="mt-2 flex justify-between text-xs text-gray-500">
+                            <span>3 bed</span>
+                            <span>3 bath</span>
+                            <span>650 sqm</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Street-Level Analysis */}
+                    <div className="bg-gray-50 p-4 rounded-lg mb-6">
+                      <h4 className="text-sm font-medium text-gray-900 mb-4">Street-Level Analysis</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <div className="space-y-3">
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Street Appeal</span>
+                              <div className="flex">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <svg key={star} className={`w-4 h-4 ${star <= 4 ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Traffic Volume</span>
+                              <span className="text-sm font-medium text-gray-900">Low</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Parking Availability</span>
+                              <span className="text-sm font-medium text-gray-900">Good</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Street Width</span>
+                              <span className="text-sm font-medium text-gray-900">Medium</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="space-y-3">
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Proximity to Schools</span>
+                              <span className="text-sm font-medium text-gray-900">0.8 km</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Proximity to Transport</span>
+                              <span className="text-sm font-medium text-gray-900">0.5 km</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Proximity to Shops</span>
+                              <span className="text-sm font-medium text-gray-900">1.2 km</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-sm text-gray-500">Proximity to Parks</span>
+                              <span className="text-sm font-medium text-gray-900">0.3 km</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Suburb Analysis Metrics */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <div className="flex items-center justify-between mb-4">
@@ -263,15 +509,15 @@ const Analysis: React.FC = () => {
                       </div>
 
                       <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="text-sm font-medium text-gray-900 mb-4">ML System</h4>
+                        <h4 className="text-sm font-medium text-gray-900 mb-4">Growth Profiles</h4>
                         <div className="space-y-2">
                           <div className="flex justify-between items-center">
-                            <span className="text-sm text-gray-500">Model Version</span>
-                            <span className="text-sm font-medium">v1.0 (April 2025)</span>
+                            <span className="text-sm text-gray-500">Suburb Growth Rate</span>
+                            <span className="text-sm font-medium">7.90%</span>
                           </div>
                           <div className="flex justify-between items-center">
-                            <span className="text-sm text-gray-500">Data Points</span>
-                            <span className="text-sm font-medium">~250,000</span>
+                            <span className="text-sm text-gray-500">Forecast Growth Rate</span>
+                            <span className="text-sm font-medium">5.90%</span>
                           </div>
                           <div className="flex justify-between items-center">
                             <span className="text-sm text-gray-500">Last Updated</span>
