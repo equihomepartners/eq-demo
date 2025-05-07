@@ -163,9 +163,16 @@ const DemoIntro: React.FC = () => {
         </div>
       </div>
 
-      <div className="text-center mt-8">
-        <p className="text-gray-600 italic">
-          Note: This demo uses mock data and is isolated from the actual platform functionality.
+      <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mt-8">
+        <h3 className="text-lg font-semibold text-amber-800 mb-2">Important Disclaimer</h3>
+        <p className="text-amber-700">
+          This demonstration is designed to showcase the various components of our platform and the flow of data in a
+          simplified manner to help understand high-level logic. It is not in any way representative of actual performance
+          in production, and there may be some inconsistencies within the data.
+        </p>
+        <p className="text-amber-700 mt-3">
+          All data shown is mock data, isolated from actual platform functionality, and should not be used for
+          investment decisions or performance evaluation.
         </p>
       </div>
 
