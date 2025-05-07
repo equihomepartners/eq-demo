@@ -186,6 +186,19 @@ const Analysis: React.FC = () => {
 
                 <TabsContent value="overview">
                   <div className="space-y-6">
+                    {/* Map and Metrics Grid - Moved to the top */}
+                    <div className="mb-6">
+                      {/* Enhanced Map */}
+                      <EnhancedTrafficLightMap
+                        selectedSuburb={mockSuburbData.suburb}
+                        propertyLocation={{
+                          address: demoState.application.property.address,
+                          lat: -33.8269, // Mosman coordinates
+                          lng: 151.2466
+                        }}
+                      />
+                    </div>
+
                     {/* PropTrack AVM Report */}
                     <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg mb-4">
                       <div className="flex items-start">
@@ -200,11 +213,11 @@ const Analysis: React.FC = () => {
                               <p className="text-sm font-semibold text-blue-900">${demoState.application.property.originalValue.toLocaleString()}</p>
                             </div>
                             <div>
-                              <p className="text-xs text-blue-700">Risk Adjustment:</p>
+                              <p className="text-xs text-blue-700">Equihome Risk Adjustment:</p>
                               <p className="text-sm font-semibold text-blue-900">-5.00%</p>
                             </div>
                             <div>
-                              <p className="text-xs text-blue-700">Adjusted Value:</p>
+                              <p className="text-xs text-blue-700">Equihome Adjusted Value:</p>
                               <p className="text-sm font-semibold text-blue-900">${(demoState.application.property.originalValue * 0.95).toLocaleString()}</p>
                             </div>
                             <div>
@@ -256,92 +269,193 @@ const Analysis: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Property Value History Chart */}
-                    <div className="bg-white border border-gray-200 p-4 rounded-lg mb-6">
-                      <h4 className="text-sm font-medium text-gray-900 mb-4">Property Value History (20 Years)</h4>
-                      <div className="h-64 relative">
-                        {/* Simplified chart representation */}
+                    {/* Property Value History Chart - Improved UI */}
+                    <div className="bg-white border border-gray-200 p-6 rounded-lg mb-6 shadow-sm">
+                      <div className="flex justify-between items-center mb-6">
+                        <h4 className="text-sm font-medium text-gray-900">Property Value History (20 Years)</h4>
+                        <div className="flex space-x-2">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-1"></span>
+                            Property Value
+                          </span>
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                            Forecast
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="h-80 relative mt-8 mb-4">
+                        {/* Improved chart representation with better axes */}
                         <div className="absolute inset-0 flex items-end">
                           {/* Chart bars/line representation */}
                           <div className="w-full h-full relative">
-                            {/* Y-axis labels */}
-                            <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-500">
-                              <span>$3M</span>
-                              <span>$2.5M</span>
-                              <span>$2M</span>
-                              <span>$1.5M</span>
-                              <span>$1M</span>
-                              <span>$0.5M</span>
-                              <span>$0</span>
+                            {/* Grid lines - more visible */}
+                            <div className="absolute inset-0 ml-16">
+                              {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+                                <div
+                                  key={i}
+                                  className="absolute w-full border-t border-gray-200"
+                                  style={{ top: `${i * (100/6)}%` }}
+                                ></div>
+                              ))}
                             </div>
 
-                            {/* Chart area */}
-                            <div className="ml-10 h-full relative">
+                            {/* Y-axis with better spacing and visibility */}
+                            <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs font-medium text-gray-600 bg-white py-1">
+                              <span className="w-14 text-right pr-2">$3.5M</span>
+                              <span className="w-14 text-right pr-2">$3.0M</span>
+                              <span className="w-14 text-right pr-2">$2.5M</span>
+                              <span className="w-14 text-right pr-2">$2.0M</span>
+                              <span className="w-14 text-right pr-2">$1.5M</span>
+                              <span className="w-14 text-right pr-2">$1.0M</span>
+                              <span className="w-14 text-right pr-2">$0.5M</span>
+                            </div>
+
+                            {/* Chart area with more space for axes */}
+                            <div className="ml-16 h-full relative pr-4">
                               {/* Chart line */}
                               <div className="absolute bottom-0 left-0 w-full h-full">
-                                <svg className="w-full h-full">
+                                <svg className="w-full h-full" viewBox="0 0 800 240" preserveAspectRatio="none">
                                   <defs>
                                     <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                       <stop offset="0%" stopColor="rgba(59, 130, 246, 0.5)" />
-                                      <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                                      <stop offset="100%" stopColor="rgba(59, 130, 246, 0.05)" />
+                                    </linearGradient>
+                                    <linearGradient id="gradientForecast" x1="0%" y1="0%" x2="0%" y2="100%">
+                                      <stop offset="0%" stopColor="rgba(16, 185, 129, 0.3)" />
+                                      <stop offset="100%" stopColor="rgba(16, 185, 129, 0.05)" />
                                     </linearGradient>
                                   </defs>
-                                  {/* Area under the curve */}
+
+                                  {/* Vertical grid lines */}
+                                  <g className="grid-lines">
+                                    {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+                                      <line
+                                        key={i}
+                                        x1={i * (800/6)}
+                                        y1="0"
+                                        x2={i * (800/6)}
+                                        y2="240"
+                                        stroke="#f3f4f6"
+                                        strokeWidth="1"
+                                      />
+                                    ))}
+                                  </g>
+
+                                  {/* Historical data area */}
                                   <path
-                                    d="M0,224 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,0 L700,224 L0,224 Z"
+                                    d="M0,220 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,20 L700,240 L0,240 Z"
                                     fill="url(#gradient)"
                                   />
-                                  {/* Line */}
+
+                                  {/* Historical data line */}
                                   <path
-                                    d="M0,224 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,0"
+                                    d="M0,220 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,20"
                                     fill="none"
                                     stroke="#3b82f6"
-                                    strokeWidth="2"
+                                    strokeWidth="3"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                   />
-                                  {/* Data points */}
-                                  <circle cx="0" cy="224" r="4" fill="#3b82f6" />
-                                  <circle cx="200" cy="180" r="4" fill="#3b82f6" />
-                                  <circle cx="700" cy="0" r="4" fill="#3b82f6" />
+
+                                  {/* Forecast data area */}
+                                  <path
+                                    d="M700,20 L750,10 L800,0 L800,240 L700,240 Z"
+                                    fill="url(#gradientForecast)"
+                                  />
+
+                                  {/* Forecast data line (dashed) */}
+                                  <path
+                                    d="M700,20 L750,10 L800,0"
+                                    fill="none"
+                                    stroke="#10b981"
+                                    strokeWidth="3"
+                                    strokeDasharray="6 4"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+
+                                  {/* Transaction data points */}
+                                  <circle cx="0" cy="220" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                                  <circle cx="200" cy="180" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                                  <circle cx="700" cy="20" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                                  <circle cx="800" cy="0" r="6" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+
+                                  {/* Transaction labels - better positioned */}
+                                  <g>
+                                    <rect x="-25" y="235" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                                    <text x="0" y="250" textAnchor="middle" fill="#4b5563" fontSize="10" fontWeight="500">1997</text>
+                                    <text x="0" y="262" textAnchor="middle" fill="#4b5563" fontSize="10">$750K</text>
+                                  </g>
+                                  <g>
+                                    <rect x="175" y="195" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                                    <text x="200" y="210" textAnchor="middle" fill="#4b5563" fontSize="10" fontWeight="500">1998</text>
+                                    <text x="200" y="222" textAnchor="middle" fill="#4b5563" fontSize="10">$825K</text>
+                                  </g>
+                                  <g>
+                                    <rect x="675" y="-15" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                                    <text x="700" y="0" textAnchor="middle" fill="#4b5563" fontSize="10" fontWeight="500">2020</text>
+                                    <text x="700" y="12" textAnchor="middle" fill="#4b5563" fontSize="10">$2.8M</text>
+                                  </g>
+                                  <g>
+                                    <rect x="775" y="-35" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                                    <text x="800" y="-20" textAnchor="middle" fill="#10b981" fontSize="10" fontWeight="500">2027</text>
+                                    <text x="800" y="-8" textAnchor="middle" fill="#10b981" fontSize="10">$3.5M</text>
+                                  </g>
                                 </svg>
                               </div>
 
-                              {/* X-axis labels */}
-                              <div className="absolute bottom-0 left-0 w-full flex justify-between text-xs text-gray-500 transform translate-y-6">
-                                <span>1997</span>
-                                <span>2002</span>
-                                <span>2007</span>
-                                <span>2012</span>
-                                <span>2017</span>
-                                <span>2022</span>
+                              {/* X-axis with better visibility */}
+                              <div className="absolute -bottom-8 left-0 w-full flex justify-between text-xs font-medium text-gray-600">
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">1997</span>
+                                </div>
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">2002</span>
+                                </div>
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">2007</span>
+                                </div>
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">2012</span>
+                                </div>
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">2017</span>
+                                </div>
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">2022</span>
+                                </div>
+                                <div className="text-center">
+                                  <span className="px-2 py-1 bg-white rounded">2027</span>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="mt-8 grid grid-cols-2 gap-4">
+
+                      <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-50 p-4 rounded-lg">
                         <div>
                           <p className="text-xs text-gray-500">Historical Growth Rate (CAGR)</p>
-                          <p className="text-sm font-medium text-gray-900">7.90% p.a.</p>
+                          <p className="text-sm font-semibold text-gray-900">7.90% p.a.</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Forecast Growth Rate</p>
-                          <p className="text-sm font-medium text-gray-900">5.90% p.a.</p>
+                          <p className="text-sm font-semibold text-gray-900">5.90% p.a.</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Total Appreciation</p>
+                          <p className="text-sm font-semibold text-gray-900">+273.3%</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500">Annualized Return</p>
+                          <p className="text-sm font-semibold text-gray-900">6.85% p.a.</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Map and Metrics Grid */}
-                    <div className="mb-6">
-                      {/* Enhanced Map */}
-                      <EnhancedTrafficLightMap
-                        selectedSuburb={mockSuburbData.suburb}
-                        propertyLocation={{
-                          address: demoState.application.property.address,
-                          lat: -33.8269, // Mosman coordinates
-                          lng: 151.2466
-                        }}
-                      />
-                    </div>
+
 
                     {/* Property Metrics Section */}
                     <div className="bg-gray-50 p-4 rounded-lg mb-6">
