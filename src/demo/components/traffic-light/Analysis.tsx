@@ -236,6 +236,14 @@ const Analysis: React.FC = () => {
                     <div className="bg-gray-50 p-4 rounded-lg mb-6">
                       <h4 className="text-sm font-medium text-gray-900 mb-4">Property Transaction History</h4>
                       <div className="overflow-x-auto">
+                        <div className="text-xs text-blue-600 mb-2">
+                          <span className="inline-flex items-center">
+                            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clipRule="evenodd" />
+                            </svg>
+                            March 2020 is the most recent transaction. All values after this date are forecasts.
+                          </span>
+                        </div>
                         <table className="min-w-full divide-y divide-gray-200">
                           <thead className="bg-gray-100">
                             <tr>
@@ -246,10 +254,10 @@ const Analysis: React.FC = () => {
                             </tr>
                           </thead>
                           <tbody className="bg-white divide-y divide-gray-200">
-                            <tr>
-                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">March 2020</td>
-                              <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">Sale</td>
-                              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">$2,800,000</td>
+                            <tr className="bg-blue-50">
+                              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-blue-900">March 2020</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm text-blue-700">Sale</td>
+                              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-blue-900">$2,800,000</td>
                               <td className="px-4 py-2 whitespace-nowrap text-sm text-green-600">+239.4%</td>
                             </tr>
                             <tr>
@@ -273,14 +281,18 @@ const Analysis: React.FC = () => {
                     <div className="bg-white border border-gray-200 p-6 rounded-lg mb-6 shadow-sm">
                       <div className="flex justify-between items-center mb-6">
                         <h4 className="text-sm font-medium text-gray-900">Property Value History (20 Years)</h4>
-                        <div className="flex space-x-2">
+                        <div className="flex flex-wrap gap-2">
                           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-1"></span>
-                            Property Value
+                            Historical (1997-2020)
                           </span>
                           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                             <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
-                            Forecast
+                            Forecast (2020-2027)
+                          </span>
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                            <span className="w-2 h-2 border border-blue-500 rounded-full mr-1"></span>
+                            Last Transaction (2020)
                           </span>
                         </div>
                       </div>
@@ -343,15 +355,15 @@ const Analysis: React.FC = () => {
                                     ))}
                                   </g>
 
-                                  {/* Historical data area */}
+                                  {/* Historical data area - only up to 2020 */}
                                   <path
-                                    d="M0,220 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,20 L700,240 L0,240 Z"
+                                    d="M0,220 L100,200 L200,180 L300,150 L400,120 L500,20 L500,240 L0,240 Z"
                                     fill="url(#gradient)"
                                   />
 
-                                  {/* Historical data line */}
+                                  {/* Historical data line - only up to 2020 */}
                                   <path
-                                    d="M0,220 L100,200 L200,180 L300,150 L400,120 L500,80 L600,40 L700,20"
+                                    d="M0,220 L100,200 L200,180 L300,150 L400,120 L500,20"
                                     fill="none"
                                     stroke="#3b82f6"
                                     strokeWidth="3"
@@ -359,15 +371,15 @@ const Analysis: React.FC = () => {
                                     strokeLinejoin="round"
                                   />
 
-                                  {/* Forecast data area */}
+                                  {/* Forecast data area - starts from 2020 */}
                                   <path
-                                    d="M700,20 L750,10 L800,0 L800,240 L700,240 Z"
+                                    d="M500,20 L600,15 L700,10 L800,0 L800,240 L500,240 Z"
                                     fill="url(#gradientForecast)"
                                   />
 
-                                  {/* Forecast data line (dashed) */}
+                                  {/* Forecast data line (dashed) - starts from 2020 */}
                                   <path
-                                    d="M700,20 L750,10 L800,0"
+                                    d="M500,20 L600,15 L700,10 L800,0"
                                     fill="none"
                                     stroke="#10b981"
                                     strokeWidth="3"
@@ -376,10 +388,21 @@ const Analysis: React.FC = () => {
                                     strokeLinejoin="round"
                                   />
 
+                                  {/* Divider line between historical and forecast data */}
+                                  <line
+                                    x1="500"
+                                    y1="0"
+                                    x2="500"
+                                    y2="240"
+                                    stroke="#3b82f6"
+                                    strokeWidth="1.5"
+                                    strokeDasharray="4 2"
+                                  />
+
                                   {/* Transaction data points */}
                                   <circle cx="0" cy="220" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
                                   <circle cx="200" cy="180" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
-                                  <circle cx="700" cy="20" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
+                                  <circle cx="500" cy="20" r="6" fill="#3b82f6" stroke="#ffffff" strokeWidth="2" />
                                   <circle cx="800" cy="0" r="6" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
 
                                   {/* Transaction labels - better positioned */}
@@ -394,9 +417,9 @@ const Analysis: React.FC = () => {
                                     <text x="200" y="222" textAnchor="middle" fill="#4b5563" fontSize="10">$825K</text>
                                   </g>
                                   <g>
-                                    <rect x="675" y="-15" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
-                                    <text x="700" y="0" textAnchor="middle" fill="#4b5563" fontSize="10" fontWeight="500">2020</text>
-                                    <text x="700" y="12" textAnchor="middle" fill="#4b5563" fontSize="10">$2.8M</text>
+                                    <rect x="475" y="-15" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                                    <text x="500" y="0" textAnchor="middle" fill="#4b5563" fontSize="10" fontWeight="500">2020</text>
+                                    <text x="500" y="12" textAnchor="middle" fill="#4b5563" fontSize="10">$2.8M</text>
                                   </g>
                                   <g>
                                     <rect x="775" y="-35" width="50" height="30" rx="4" fill="white" stroke="#e5e7eb" strokeWidth="1" />
@@ -424,10 +447,10 @@ const Analysis: React.FC = () => {
                                   <span className="px-2 py-1 bg-white rounded">2017</span>
                                 </div>
                                 <div className="text-center">
-                                  <span className="px-2 py-1 bg-white rounded">2022</span>
+                                  <span className="px-2 py-1 bg-white rounded border border-blue-500">2020</span>
                                 </div>
                                 <div className="text-center">
-                                  <span className="px-2 py-1 bg-white rounded">2027</span>
+                                  <span className="px-2 py-1 bg-green-50 rounded border border-green-500">2027</span>
                                 </div>
                               </div>
                             </div>
