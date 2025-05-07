@@ -9,6 +9,7 @@ import mockData, { mockPortfolioMetrics, mockPortfolioImpact } from '../../data/
 import PortfolioChart from './PortfolioChart';
 import PieChart from './PieChart';
 import LineChart from './LineChart';
+import LoanTermChart from './LoanTermChart';
 import { EnhancedPortfolioDashboard } from '../enhanced';
 
 const Impact: React.FC = () => {
@@ -343,17 +344,17 @@ const Impact: React.FC = () => {
                       </div>
 
                       <div className="bg-gray-50 p-6 rounded-lg">
-                        <h4 className="text-lg font-medium text-gray-900 mb-4">Property Type Allocation</h4>
+                        <h4 className="text-lg font-medium text-gray-900 mb-4">Loan Term Distribution</h4>
                         <div className="flex items-center justify-center h-48">
-                          <div className="text-center text-gray-500">
-                            <PieChart
+                          <div className="text-center text-gray-500 w-full">
+                            <LoanTermChart
                               data={{
-                                labels: ['House', 'Apartment', 'Townhouse'],
-                                values: [65, 25, 10],
-                                colors: ['#818cf8', '#c084fc', '#fb7185']
+                                terms: ['5 Years', '7 Years', '10 Years', '15 Years', '20 Years'],
+                                counts: [4, 12, 18, 6, 2],
+                                percentages: [10, 28, 43, 14, 5],
+                                colors: ['#818cf8', '#a78bfa', '#c084fc', '#e879f9', '#f472b6']
                               }}
-                              size={150}
-                              title="Property Type Allocation"
+                              height={150}
                             />
                           </div>
                         </div>
@@ -364,10 +365,11 @@ const Impact: React.FC = () => {
                       <div className="flex items-start">
                         <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 mr-3" />
                         <div>
-                          <h3 className="text-sm font-medium text-yellow-800">Allocation Warning</h3>
+                          <h3 className="text-sm font-medium text-yellow-800">Allocation Insights</h3>
                           <p className="text-sm text-yellow-700 mt-1">
                             The {demoState.application.property.suburb} allocation has increased to {mockPortfolioImpact.afterLoan.mosmanAllocation}% of the portfolio.
-                            Consider targeting different suburbs for future loans to maintain diversification.
+                            Additionally, this 10-year term loan adds to the concentration in the 7-10 year term range (now 71% of portfolio).
+                            Consider diversifying future loans across different suburbs and term lengths.
                           </p>
                         </div>
                       </div>
@@ -728,10 +730,11 @@ const Impact: React.FC = () => {
                               <AlertCircle className="h-4 w-4 text-yellow-600" />
                             </div>
                             <div>
-                              <h5 className="text-sm font-medium text-gray-800">Concentration Warning: {demoState.application.property.suburb}</h5>
+                              <h5 className="text-sm font-medium text-gray-800">Concentration Analysis</h5>
                               <p className="text-xs text-gray-600 mt-1">
                                 The loan increases {demoState.application.property.suburb} concentration to 21%, which is within
-                                the acceptable range but should be monitored for future loans.
+                                the acceptable range. The 10-year term adds to the concentration in medium-term loans (7-10 years),
+                                but this aligns with our portfolio strategy for single-family homes.
                               </p>
                             </div>
                           </div>
