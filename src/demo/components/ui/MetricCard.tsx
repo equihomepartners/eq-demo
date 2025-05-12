@@ -17,11 +17,12 @@ interface MetricCardProps {
   footer?: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  description?: string;
 }
 
 /**
  * Metric Card component for displaying key metrics with trends
- * 
+ *
  * @param title - Metric title
  * @param value - Current metric value
  * @param previousValue - Previous metric value
@@ -50,6 +51,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
   footer,
   className = '',
   onClick,
+  description,
 }) => {
   // Determine trend if not explicitly provided
   if (trend === undefined && change !== undefined) {
@@ -61,7 +63,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
       trend = 'neutral';
     }
   }
-  
+
   // Determine trend color if not explicitly provided
   if (trendColor === 'gray' && trend !== undefined) {
     if (trend === 'up') {
@@ -70,7 +72,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
       trendColor = 'red';
     }
   }
-  
+
   // Get trend color from theme
   const getTrendColor = () => {
     switch (trendColor) {
@@ -86,7 +88,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
         return theme.colors.gray[500];
     }
   };
-  
+
   // Get trend background color
   const getTrendBgColor = () => {
     switch (trendColor) {
@@ -102,21 +104,21 @@ const MetricCard: React.FC<MetricCardProps> = ({
         return theme.colors.gray[100];
     }
   };
-  
+
   // Format change value
   const formatChange = () => {
     if (change === undefined) return null;
-    
+
     const absChange = Math.abs(change);
     const prefix = change > 0 ? '+' : change < 0 ? '-' : '';
-    
+
     if (changeType === 'percentage') {
       return `${prefix}${absChange.toFixed(1)}%`;
     } else {
       return `${prefix}${absChange}`;
     }
   };
-  
+
   // Get trend icon
   const getTrendIcon = () => {
     if (trend === 'up') {
@@ -127,14 +129,14 @@ const MetricCard: React.FC<MetricCardProps> = ({
       return <ArrowRightIcon className="h-4 w-4" />;
     }
   };
-  
+
   return (
     <EnhancedCard
       variant={onClick ? 'interactive' : 'elevated'}
       status={status}
       className={`${className}`}
     >
-      <div 
+      <div
         className="p-4 flex flex-col h-full"
         onClick={onClick}
         style={{ cursor: onClick ? 'pointer' : 'default' }}
@@ -147,14 +149,14 @@ const MetricCard: React.FC<MetricCardProps> = ({
             </div>
           )}
         </div>
-        
+
         <div className="flex items-baseline mb-2">
           <div className="text-2xl font-bold text-gray-900">{value}</div>
-          
+
           {change !== undefined && (
-            <div 
+            <div
               className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium flex items-center"
-              style={{ 
+              style={{
                 backgroundColor: getTrendBgColor(),
                 color: getTrendColor()
               }}
@@ -166,9 +168,9 @@ const MetricCard: React.FC<MetricCardProps> = ({
             </div>
           )}
         </div>
-        
+
         {(previousValue !== undefined || changeTimeframe) && (
-          <div className="text-xs text-gray-500 mb-4">
+          <div className="text-xs text-gray-500 mb-2">
             {previousValue !== undefined && (
               <span>Previous: {previousValue} </span>
             )}
@@ -177,7 +179,13 @@ const MetricCard: React.FC<MetricCardProps> = ({
             )}
           </div>
         )}
-        
+
+        {description && (
+          <div className="text-xs text-gray-600 mt-2 bg-gray-50 p-2 rounded-md border border-gray-100">
+            {description}
+          </div>
+        )}
+
         {footer && (
           <div className="mt-auto pt-4 border-t border-gray-100">
             {footer}

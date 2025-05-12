@@ -17,6 +17,7 @@ interface KpiItem {
   trendColor?: 'green' | 'red' | 'yellow' | 'blue' | 'gray';
   status?: 'default' | 'success' | 'warning' | 'error' | 'info';
   onClick?: () => void;
+  description?: string;
 }
 
 interface KpiDashboardProps {
@@ -30,7 +31,7 @@ interface KpiDashboardProps {
 
 /**
  * KPI Dashboard component for displaying multiple metrics
- * 
+ *
  * @param title - Dashboard title
  * @param subtitle - Dashboard subtitle
  * @param kpis - Array of KPI items
@@ -52,9 +53,9 @@ const KpiDashboard: React.FC<KpiDashboardProps> = ({
     if (kpis.length <= 3) return 3;
     return columns;
   };
-  
+
   const gridCols = getGridCols();
-  
+
   const content = (
     <div className={`w-full ${className}`}>
       {(title || subtitle) && (
@@ -63,7 +64,7 @@ const KpiDashboard: React.FC<KpiDashboardProps> = ({
           {subtitle && <p className="text-sm text-gray-500">{subtitle}</p>}
         </div>
       )}
-      
+
       <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${gridCols} gap-4`}>
         {kpis.map((kpi) => (
           <MetricCard
@@ -79,12 +80,13 @@ const KpiDashboard: React.FC<KpiDashboardProps> = ({
             trendColor={kpi.trendColor}
             status={kpi.status}
             onClick={kpi.onClick}
+            description={kpi.description}
           />
         ))}
       </div>
     </div>
   );
-  
+
   if (showCard) {
     return (
       <EnhancedCard variant="default" className={className}>
@@ -94,7 +96,7 @@ const KpiDashboard: React.FC<KpiDashboardProps> = ({
       </EnhancedCard>
     );
   }
-  
+
   return content;
 };
 

@@ -20,9 +20,9 @@ import {
 // Demo components
 import DemoIntro from './components/DemoIntro';
 import UnderwritingDemo from './components/underwriting/UnderwritingDemo';
+import DataSciencePipeline from './components/pipeline/DataSciencePipeline';
 import TrafficLightDemo from './components/traffic-light/TrafficLightDemo';
 import PortfolioDemo from './components/portfolio/PortfolioDemo';
-import SimulationDemo from './components/portfolio/SimulationDemo';
 import ExecutiveSummary from './components/summary/ExecutiveSummary';
 import DemoNavigation from './components/DemoNavigation';
 import DemoContext from './context/DemoContext';
@@ -38,9 +38,9 @@ import { mockLoanApplication, mockSuburbData, mockDecisionResult } from './data/
 const DEMO_STEPS = [
   'intro',
   'underwriting-application',
+  'data-science-pipeline',
   'traffic-light-analysis',
-  'portfolio-impact',
-  'simulation',
+  'portfolio-analysis',
   'underwriting-decision',
   'executive-summary',
   'complete'
@@ -340,7 +340,7 @@ const PlatformDemo: React.FC = () => {
                       </div>
                     </div>
 
-                    <PortfolioDemo.Impact />
+                    <PortfolioDemo.Analysis />
                   </div>
                 )}
               </div>
@@ -377,9 +377,9 @@ const PlatformDemo: React.FC = () => {
                   <TabsList className="grid grid-cols-8 mb-6">
                     <TabsTrigger value="intro">Intro</TabsTrigger>
                     <TabsTrigger value="underwriting-application">Application</TabsTrigger>
+                    <TabsTrigger value="data-science-pipeline">Data Science</TabsTrigger>
                     <TabsTrigger value="traffic-light-analysis">Traffic Light</TabsTrigger>
-                    <TabsTrigger value="portfolio-impact">Portfolio</TabsTrigger>
-                    <TabsTrigger value="simulation">Simulation</TabsTrigger>
+                    <TabsTrigger value="portfolio-analysis">Portfolio Analysis</TabsTrigger>
                     <TabsTrigger value="underwriting-decision">Decision</TabsTrigger>
                     <TabsTrigger value="executive-summary">Summary</TabsTrigger>
                     <TabsTrigger value="complete">Complete</TabsTrigger>
@@ -393,6 +393,10 @@ const PlatformDemo: React.FC = () => {
             <UnderwritingDemo.Application />
           </TabsContent>
 
+          <TabsContent value="data-science-pipeline">
+            <DataSciencePipeline />
+          </TabsContent>
+
           <TabsContent value="traffic-light-analysis">
             <TrafficLightDemo.Analysis />
           </TabsContent>
@@ -401,12 +405,8 @@ const PlatformDemo: React.FC = () => {
             <UnderwritingDemo.Decision />
           </TabsContent>
 
-          <TabsContent value="portfolio-impact">
-            <PortfolioDemo.Impact />
-          </TabsContent>
-
-          <TabsContent value="simulation">
-            <SimulationDemo />
+          <TabsContent value="portfolio-analysis">
+            <PortfolioDemo.Analysis />
           </TabsContent>
 
           <TabsContent value="executive-summary">
@@ -437,9 +437,9 @@ const PlatformDemo: React.FC = () => {
                     </p>
                     <ul className="text-sm text-blue-700 mt-2 list-disc pl-5 space-y-1">
                       <li>Loan Application - Capturing borrower, property, and loan details</li>
+                      <li>Data Science Pipeline - Exploring the sophisticated ML pipeline powering our investment thesis</li>
                       <li>Traffic Light Analysis - Evaluating suburbs using the Traffic Light System</li>
-                      <li>Portfolio Impact - Analyzing how the loan affects the overall portfolio</li>
-                      <li>Simulation - Running advanced simulations to project long-term performance</li>
+                      <li>Portfolio Analysis - Analyzing portfolio impact, running simulations, and making investment decisions</li>
                       <li>Underwriting Decision - Making the final loan decision</li>
                       <li>Executive Summary - Comprehensive overview of the entire analysis</li>
                     </ul>

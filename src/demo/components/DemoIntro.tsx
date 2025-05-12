@@ -90,8 +90,20 @@ const DemoIntro: React.FC = () => {
           </div>
 
           <div className="flex items-start">
+            <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4 mt-0.5">
+              <span className="text-indigo-600 font-medium">3</span>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium">Data Science Pipeline</h4>
+              <p className="text-gray-600">
+                Explore the sophisticated ML pipeline that powers our Traffic Light investment thesis, processing hundreds of data sources.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
             <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-4 mt-0.5">
-              <span className="text-green-600 font-medium">3</span>
+              <span className="text-green-600 font-medium">4</span>
             </div>
             <div>
               <h4 className="text-lg font-medium">Traffic Light Analysis</h4>
@@ -103,24 +115,13 @@ const DemoIntro: React.FC = () => {
 
           <div className="flex items-start">
             <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4 mt-0.5">
-              <span className="text-purple-600 font-medium">4</span>
-            </div>
-            <div>
-              <h4 className="text-lg font-medium">Portfolio Impact</h4>
-              <p className="text-gray-600">
-                See how the potential loan impacts the overall portfolio metrics and investment strategy.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start">
-            <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4 mt-0.5">
               <span className="text-purple-600 font-medium">5</span>
             </div>
             <div>
-              <h4 className="text-lg font-medium">Simulation</h4>
+              <h4 className="text-lg font-medium">Portfolio Analysis</h4>
               <p className="text-gray-600">
-                Run advanced simulations to see the long-term performance of the portfolio with the new loan.
+                Analyze how the potential loan impacts the overall portfolio metrics, run advanced simulations,
+                and make data-driven investment decisions based on comprehensive analysis.
               </p>
             </div>
           </div>
@@ -185,7 +186,7 @@ const DemoIntro: React.FC = () => {
           <div>
             <h3 className="text-lg font-medium text-blue-900">Navigation Guide</h3>
             <p className="text-sm text-blue-700 mt-1">
-              To proceed with the demo, click the "Application" tab above to start the loan application process.
+              To proceed with the demo, click the "Application" tab above to start the loan application process. After that, you'll explore our Data Science Pipeline, Traffic Light System, and Portfolio Analysis.
             </p>
             <p className="text-sm text-blue-700 mt-2">
               Throughout the demo, you'll find guidance like this at the bottom of each section to help you navigate.
